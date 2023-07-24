@@ -1,0 +1,33 @@
+{
+  "name": "example-app",
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "version": "0.0.0",
+  "description": "example application to showcase best practice and preferred technology stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Planning-Inspectorate/example-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Planning-Inspectorate/example-app/issues"
+  },
+  "homepage": "https://github.com/Planning-Inspectorate/example-app#readme",
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

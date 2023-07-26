@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { defaultErrorHandler } from './errors.js';
+import { defaultErrorHandler, notFoundHandler } from './errors.js';
 import router from './router.js';
 import nunjucksEnvironment from './nunjucks.js';
 import config from './config.js';
@@ -24,6 +24,8 @@ app.use(express.static(config.staticDir));
 // register the router, which will define any subpaths
 // any paths not defined will return 404 by default
 app.use('/', router);
+
+app.use(notFoundHandler);
 
 // catch/handle errors last
 app.use(defaultErrorHandler);

@@ -4,9 +4,12 @@ import { defaultErrorHandler, notFoundHandler } from './errors.js';
 import router from './router.js';
 import nunjucksEnvironment from './nunjucks.js';
 import config from './config.js';
+import { logRequests } from '../util/log-requests.js';
 
 // create an express app, and configure it for our usage
 const app = express();
+
+app.use(logRequests);
 
 // configure body-parser, to populate req.body
 // see https://expressjs.com/en/resources/middleware/body-parser.html

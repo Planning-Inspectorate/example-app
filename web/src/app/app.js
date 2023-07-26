@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { defaultErrorHandler } from './errors.js';
 import router from './router.js';
 import nunjucksEnvironment from './nunjucks.js';
+import config from './config.js';
 
 // create an express app, and configure it for our usage
 const app = express();
@@ -16,6 +17,9 @@ app.use(bodyParser.json());
 // calls to res.render will use nunjucks
 nunjucksEnvironment.express(app);
 app.set('view engine', 'njk');
+
+// static files
+app.use(express.static(config.staticDir));
 
 // register the router, which will define any subpaths
 // any paths not defined will return 404 by default

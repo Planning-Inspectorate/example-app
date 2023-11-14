@@ -1,0 +1,10 @@
+.govuk-header{
+    &.pins-modded-header {
+        border-bottom: unset;
+    }
+
+    .govuk-header__container {
+        border-bottom: unset;
+        padding-bottom: 10px;
+    }
+}

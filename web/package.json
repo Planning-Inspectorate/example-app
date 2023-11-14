@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node src/util/build.js",
     "start": "npm run build && node src/server.js",
+    "dev": "nodemon --watch src --ext js,scss,html,njk --exec \"npm run start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -21,6 +22,7 @@
     "pino-pretty": "^10.1.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "sass": "^1.64.1"
   }
 }

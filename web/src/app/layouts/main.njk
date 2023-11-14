@@ -3,6 +3,8 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+
 {% block head %}
 	{# setup the header tags, to link to the styles #}
 	<link rel="stylesheet" href="style.css"/>
@@ -19,6 +21,24 @@
 	}) }}
 {% endblock %}
 
+{% block main %}
+  	{{ mojPrimaryNavigation({
+			label: 'Primary navigation',
+			items: [
+				{
+					text: 'Examples',
+					href: 'examples',
+					active: pageTitle === 'Example journey'
+				},
+				{
+					text: 'Challenges',
+					href: 'challenges',
+					active: pageTitle === 'Challenges'
+				}
+			]
+	}) }}
+	{{ super() }}
+{% endblock %}
 
 {% block beforeContent %}
 	{% block backLink %}

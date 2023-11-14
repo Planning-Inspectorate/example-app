@@ -8,6 +8,7 @@ const router = createRouter();
 
 // setup the handlers for the pages
 router.route('/').get(viewHomepage);
+router.use('/examples', examplesRouter);
 
 
 // export the router for use by the app

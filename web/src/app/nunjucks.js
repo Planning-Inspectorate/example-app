@@ -7,11 +7,13 @@ import config from './config.js';
 const require = createRequire(import.meta.url);
 // get the path to the govuk-frontend folder, in node_modules, using the node require resolution
 const govukFrontendRoot = path.resolve(require.resolve('govuk-frontend'), '../..');
+const mojFrontendRoot = path.resolve(require.resolve('@ministryofjustice/frontend'), '../..');
+const appDir = path.join(config.srcDir, 'app');
 
 // configure nunjucks
 const nunjucksEnvironment = nunjucks.configure(
-    // ensure nunjucks templates can use govuk-frontend components, and templates we've defined in `web/src`
-	[govukFrontendRoot, config.srcDir],
+    // ensure nunjucks templates can use govuk-frontend components, and templates we've defined in `web/src/app`
+	[govukFrontendRoot, mojFrontendRoot, appDir],
 	{
 		// output with dangerous characters are escaped automatically
 		autoescape: true,

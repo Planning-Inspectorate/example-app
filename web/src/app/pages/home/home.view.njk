@@ -16,7 +16,7 @@
 	{% set banner %}
 	<p class="govuk-notification-banner__heading">
 		Important information can be added to a banner
-		<a class="govuk-notification-banner__link" href="#">which can include links</a>.
+		<a class="govuk-notification-banner__link" href="#">which can include links</a>.{{ globalVar }}
 	</p>
 	{% endset %}
 	{{ govukNotificationBanner({

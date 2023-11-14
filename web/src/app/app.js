@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { defaultErrorHandler, notFoundHandler } from './errors.js';
-import router from './router.js';
+import { defaultErrorHandler, notFoundHandler } from './middleware/errors.js';
+import router from './routes/router.js';
 import nunjucksEnvironment from './nunjucks.js';
 import config from './config.js';
 import { logRequests } from '../util/log-requests.js';

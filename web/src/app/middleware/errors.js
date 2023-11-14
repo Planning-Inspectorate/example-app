@@ -1,4 +1,4 @@
-import logger from '../util/logger.js';
+import logger from '../../util/logger.js';
 
 /**
  * A catch-all error handler to use as express middleware

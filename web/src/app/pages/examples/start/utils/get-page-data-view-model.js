@@ -1,5 +1,7 @@
-export const getPageDataViewModel = () =>  ({
-    backLinkUrl: '/',
-    pageHeading: 'Example journey',
-    pageTitle: 'Example journey'
-})
+export function getPageDataViewModel() {
+    return {
+        backLinkUrl: '/',
+        pageHeading: 'Example journey',
+        pageTitle: 'Example journey'
+    }
+}

@@ -1,4 +1,4 @@
-export const appMiddleware = (req, res, next) => {
+export function appMiddleware(req, res, next) {
     const { baseUrl } = req;
 
     res.locals.baseUrl = baseUrl

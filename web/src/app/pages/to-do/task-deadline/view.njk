@@ -1,0 +1,25 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="" method="post" novalidate >
+                {{ govukDateInput({
+                    id: "task-deadline",
+                    namePrefix: "task-deadline",
+                    hint: {
+                        text: "If the task has a deadline, enter it below, or continue to the next page."
+                    }
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

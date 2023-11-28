@@ -7,7 +7,7 @@
 
 {% block head %}
 	{# setup the header tags, to link to the styles #}
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="../style.css"/>
 {% endblock %}
 
 {% block pageTitle %}
@@ -28,12 +28,12 @@
 			items: [
 				{
 					text: 'To do',
-					href: 'to-do',
+					href: '/to-do',
 					active: pageTitle === 'Example journey'
 				},
 				{
 					text: 'Challenges',
-					href: 'challenges',
+					href: '/challenges',
 					active: pageTitle === 'Challenges'
 				}
 			]
@@ -74,7 +74,8 @@
 					<h1 class="govuk-heading-xl">
 						{% if pageCaption %}
 							<span class="govuk-caption-xl">{{ pageCaption }}</span>
-						{% endif %}{{ pageHeading or pageTitle }}
+						{% endif %}
+						{{ pageHeading or pageTitle }}
 					</h1>
 				</div>
 			</div>

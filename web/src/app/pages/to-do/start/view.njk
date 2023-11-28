@@ -26,24 +26,18 @@
 
             <hr class="govuk-section-break govuk-section-break--xl">
 
-            <p>baseUrl: {{ baseUrl }}</p>
-
-
             {{ govukButton({
                 text: "Start now",
-                href: nextPage,
+                href: nextPageURL,
                 isStartButton: true
             }) }}
 
             <p class="govuk-body">
                 TODO: Journey pages:
                 <ul class="govuk-list govuk-list--bullet">
-                    <li><code>/list</code> table with current tasks with link to view/delete task, CTA to add new task </li>
-                    <li><code>/task-name</code> text input with task name</li>
-                    <li><code>/task-content</code> text area with description of the task</li>
-                    <li><code>/task-priority</code> radio with 3 options of setting the task's priority</li>
-                    <li><code>/task-deadline</code> date selection</li>
-                    <li><code>/check-answers</code> check answers and submit</li>
+                    <li>validation and error handling</li>
+                    <li>'edit' mode to update answers from check answers page</li>
+
                 </ul>
             </p>
         </div>

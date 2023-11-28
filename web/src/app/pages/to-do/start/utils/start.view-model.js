@@ -1,8 +1,8 @@
-export function startViewModel() {
+export function startViewModel(baseUrl) {
     return {
         backLinkUrl: '/',
         pageHeading: 'Example journey',
         pageTitle: 'Example journey',
-        nextPage: 'list'
+        nextPageURL: `${baseUrl}/list`
     }
 }

@@ -1,9 +1,19 @@
+import { getAllTodos } from '../_services/todo.service.js';
 import { listViewModel } from './utils/list.view-model.js'
 
 const view = 'pages/to-do/list/view.njk'
 
-export function getToDoList(req, res) {
-    const { baseUrl } = req;
+export async function getToDoList(req, res) {
+    const { baseUrl, session } = req;
 
-    res.render(view, listViewModel(baseUrl));
+    const todoList = await getAllTodos();
+
+    //TODO: maybe lift away all session manipulation to a designated session handler?
+    //Clear todo session data
+    delete session.todo;
+
+    console.log('session:>>>', session)
+    console.log('todoList:>>>', todoList)
+
+    res.render(view, listViewModel(baseUrl, todoList));
 }

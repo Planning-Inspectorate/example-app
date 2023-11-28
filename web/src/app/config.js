@@ -22,6 +22,7 @@ export default {
     httpPort: process.env.HTTP_PORT || 8080,
     // the web/src directory
     srcDir,
+    sessionSecret: 'shhh, secret!',
     // the static directory to serve assets from (images, css, etc..)
     staticDir
 };

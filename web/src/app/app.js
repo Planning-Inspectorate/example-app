@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import bodyParser from 'body-parser';
 import { defaultErrorHandler, notFoundHandler } from './middleware/errors.js';
 import router from './routes/router.js';
@@ -15,6 +16,11 @@ app.use(logRequests);
 // see https://expressjs.com/en/resources/middleware/body-parser.html
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({
+    secret: config.sessionSecret,
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Set the express view engine to nunjucks
 // calls to res.render will use nunjucks

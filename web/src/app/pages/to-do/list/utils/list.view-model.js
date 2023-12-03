@@ -9,11 +9,12 @@ function todoListMap(baseUrl, todoList)  {
     });
 }
 
-export function listViewModel(baseUrl, todoList) {
+export function listViewModel(baseUrl, todoList, taskCreated) {
     return {
         backLinkUrl: baseUrl,
         pageHeading: 'To do list',
         pageTitle: 'To do list',
+        taskCreated: taskCreated === 'true',
         todoList: todoListMap(baseUrl, todoList)
     }
 } 

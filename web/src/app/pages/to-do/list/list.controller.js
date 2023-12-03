@@ -4,7 +4,8 @@ import { listViewModel } from './utils/list.view-model.js'
 const view = 'pages/to-do/list/view.njk'
 
 export async function getToDoList(req, res) {
-    const { baseUrl, session } = req;
+    const { baseUrl, session, query } = req;
+    const { taskCreated } = query;
 
     const todoList = await getAllTasks();
 
@@ -15,5 +16,5 @@ export async function getToDoList(req, res) {
     console.log('session:>>>', session)
     console.log('todoList:>>>', todoList)
 
-    res.render(view, listViewModel(baseUrl, todoList));
+    res.render(view, listViewModel(baseUrl, todoList, taskCreated));
 }

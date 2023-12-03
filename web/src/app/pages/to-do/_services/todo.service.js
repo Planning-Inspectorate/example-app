@@ -12,6 +12,11 @@ export async function getTaskById(taskId) {
     return task
 }
 
+export async function createTask(taskBody) {
+    const { data: task } = await axios.post(`${baseUrl}/todos`, taskBody);
+    return task
+}
+
 export async function deleteTask(taskId) {
     const { data: task } = await axios.delete(`${baseUrl}/todos/${taskId}`);
     return task

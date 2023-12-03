@@ -1,4 +1,8 @@
+import { createTask } from '../_services/todo.service.js'
 import { checkAnswersViewModel } from './utils/check-answers.view-model.js'
+import { getTaskPayload } from './utils/get-task-payload.js'
+import  logger from '../../../../util/logger.js'
+
 
 const view = 'pages/to-do/check-answers/view.njk'
 
@@ -10,12 +14,22 @@ export function getCheckAnswers(req, res) {
     res.render(view, checkAnswersViewModel(baseUrl, session))
 }
 
-export function postCheckAnswers(req, res) {
+export async function postCheckAnswers(req, res, next) {
+    const { session } = req
+    const { todo } = session
     const { locals } = res
     const { baseUrl } = locals
-    
 
-    //TODO: update db with new task
+    console.log('todo:::', todo)
 
-    return res.redirect(`${baseUrl}/check-answers`)
+    try {
+        const payload = getTaskPayload(todo)
+
+        await createTask(payload)
+        return res.redirect(`${baseUrl}/list?success=true`)
+
+    } catch (error) {
+        logger.error(error)
+        next(error)
+    }
 }

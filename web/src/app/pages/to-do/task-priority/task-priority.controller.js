@@ -24,7 +24,7 @@ export function postTaskPriority(req, res) {
         })
     }
     session.todo = session.todo || {}
-    session.todo.taskPriority = body.taskPriority
+    session.todo.taskPriority = Number(body.taskPriority)
 
     console.log('session:>>>', session)
 

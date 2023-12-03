@@ -9,9 +9,6 @@ export function defaultErrorHandler(error, req, res, next) {
     const message = error.message || 'unknown error'
     logger.error(message, error);
 
-    //TODO: logger doesn't seem to log the error, console logging for now
-    console.log(error)
-
     if (res.headersSent) {
         next(error);
         return;

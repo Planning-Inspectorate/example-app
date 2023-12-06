@@ -3,16 +3,17 @@ import { taskNameViewModel } from './utils/task-name.view-model.js'
 const view = 'pages/to-do/task-name/view.njk'
 
 export function getTaskName(req, res) {
-    const { session } = req
+    const { session, query } = req
+    const { mode } = query
     const { locals } = res
     const { baseUrl } = locals
     res.render(view, {
-        ...taskNameViewModel(baseUrl, session),
+        ...taskNameViewModel(baseUrl, session, mode),
     })
 }
 
 export function postTaskName(req, res) {
-    const { body, session } = req
+    const { body, session, query } = req
     //errors and errorSummary are added by the express-validator
     const { errors, errorSummary } = body
 
@@ -30,5 +31,9 @@ export function postTaskName(req, res) {
         })
     }
 
+    if(query.mode === 'edit') {
+        return res.redirect(`${baseUrl}/check-answers`)
+    }
     return res.redirect(`${baseUrl}/task-content`)
+
 }

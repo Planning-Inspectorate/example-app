@@ -13,8 +13,5 @@ export async function getToDoList(req, res) {
     //Clear todo session data
     delete session.todo;
 
-    console.log('session:>>>', session)
-    console.log('todoList:>>>', todoList)
-
     res.render(view, listViewModel(baseUrl, todoList, taskCreated));
 }

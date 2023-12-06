@@ -13,8 +13,6 @@ export async function getTask(req, res) {
     const { baseUrl } = locals
 
     const taskItem = await getTaskById(taskId)
-
-    console.log(taskItem)
     
     res.render(view, taskViewModel(baseUrl, taskItem))
 }
@@ -32,7 +30,6 @@ export async function postTask(req, res, next) {
         res.redirect(`${baseUrl}/list`)
     } catch (error) {
         //in case of an error, log it and pass on to to the next error handler
-
         logger.error(error)
         next(error)
     }

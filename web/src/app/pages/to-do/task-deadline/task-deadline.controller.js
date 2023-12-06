@@ -3,11 +3,12 @@ import { getTaskDeadlineDateInput } from './utils/get-task-deadline-date-input.j
 const view = 'pages/to-do/task-deadline/view.njk'
 
 export function getTaskDeadline(req, res) {
-    const { body, session } = req
+    const { body, session, query } = req
+    const { mode } = query
     const { locals } = res
     const { baseUrl } = locals
 
-    res.render(view, taskDeadlineViewModel(baseUrl, session))
+    res.render(view, taskDeadlineViewModel(baseUrl, session, mode))
 }
 
 export function postTaskDeadline(req, res) {

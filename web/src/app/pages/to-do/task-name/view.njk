@@ -8,9 +8,12 @@
         <div class="govuk-grid-column-two-thirds">
             <form action="" method="post" novalidate>
                 {{ govukInput({
-                    id: "task-name",
+                    id: "taskName",
                     name: "taskName",
-                    value: taskNameValue
+                    value: taskNameValue or errors['taskName'].value,
+                    errorMessage: errors['taskName'] and {
+                        text: errors['taskName'].msg
+                    }
                 }) }}
 
                 {{ govukButton({

@@ -20,13 +20,11 @@ export async function postCheckAnswers(req, res, next) {
     const { locals } = res
     const { baseUrl } = locals
 
-    console.log('todo:::', todo)
-
     try {
         const payload = getTaskPayload(todo)
 
         await createTask(payload)
-        return res.redirect(`${baseUrl}/list?success=true`)
+        return res.redirect(`${baseUrl}/list?taskCreated=true`)
 
     } catch (error) {
         logger.error(error)

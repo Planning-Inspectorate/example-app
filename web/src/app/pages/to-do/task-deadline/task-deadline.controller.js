@@ -3,29 +3,24 @@ import { getTaskDeadlineDateInput } from './utils/get-task-deadline-date-input.j
 const view = 'pages/to-do/task-deadline/view.njk'
 
 export function getTaskDeadline(req, res) {
+    const { body, session } = req
     const { locals } = res
     const { baseUrl } = locals
-    res.render(view, taskDeadlineViewModel(baseUrl))
+
+    res.render(view, taskDeadlineViewModel(baseUrl, session))
 }
 
 export function postTaskDeadline(req, res) {
     const { body, session } = req
-    const { errors } = body
 
     const { locals } = res
     const { baseUrl } = locals
-    
-    if(errors) {
-        //TODO handle errors
-        return res.render(view, {
-            ...taskDeadlineViewModel(body),
-            errors
-        })
-    }
 
-    const taskDeadline = getTaskDeadlineDateInput(body)
+    const taskDeadlineFriendly = getTaskDeadlineDateInput(body)
+    
     session.todo = session.todo || {}
-    session.todo.taskDeadline = taskDeadline
+    session.todo.taskDeadlineFriendly = taskDeadlineFriendly
+    session.todo.taskDeadline = body
 
     return res.redirect(`${baseUrl}/check-answers`)
 }

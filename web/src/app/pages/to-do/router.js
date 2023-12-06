@@ -1,6 +1,8 @@
 import express from 'express';
 
 import { toDoMiddleware } from './_middleware/to-do.middleware.js';
+
+//controllers
 import { getToDoStart }  from './start/start.controller.js';
 import { getToDoList } from './list/list.controller.js';
 import { getTaskName, postTaskName } from './task-name/task-name.controller.js';
@@ -9,6 +11,11 @@ import { getTaskPriority, postTaskPriority } from './task-priority/task-priority
 import { getTaskDeadline, postTaskDeadline } from './task-deadline/task-deadline.controller.js';
 import { getCheckAnswers, postCheckAnswers } from './check-answers/check-answers.controller.js';
 import { getTask, postTask } from './task/task.controller.js';
+
+//validators
+import { taskNameValidator } from './task-name/task-name-validator.js';
+import { taskPriorityValidator } from './task-priority/task-priority-validator.js';
+import { validationErrorHandler } from '../../validators/validation-error-handler.js';
 
 
 const toDoRouter = express.Router();
@@ -23,7 +30,7 @@ toDoRouter
 
 toDoRouter
     .get('/task-name', toDoMiddleware, getTaskName)
-    .post('/task-name', toDoMiddleware, postTaskName)
+    .post('/task-name', toDoMiddleware, taskNameValidator(), validationErrorHandler, postTaskName)
 
 toDoRouter
     .get('/task-content', toDoMiddleware, getTaskContent)
@@ -31,7 +38,7 @@ toDoRouter
 
 toDoRouter
     .get('/task-priority', toDoMiddleware, getTaskPriority)
-    .post('/task-priority', toDoMiddleware, postTaskPriority)
+    .post('/task-priority', toDoMiddleware, taskPriorityValidator(), validationErrorHandler, postTaskPriority)
 
 toDoRouter
     .get('/task-deadline', toDoMiddleware, getTaskDeadline)

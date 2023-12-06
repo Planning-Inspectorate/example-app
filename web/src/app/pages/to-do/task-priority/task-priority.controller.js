@@ -6,27 +6,27 @@ export function getTaskPriority(req, res) {
     const { session } = req
     const { locals } = res
     const { baseUrl } = locals
+
     res.render(view, taskPriorityViewModel(baseUrl, session))
 }
 
 export function postTaskPriority(req, res) {
     const { body, session } = req
-    const { errors } = body
+    //errors and errorSummary are added by the validation middleware
+    const { errors, errorSummary } = body
 
     const { locals } = res
     const { baseUrl } = locals
 
     if(errors) {
-        //TODO handle errors
         return res.render(view, {
-            ...taskPriorityViewModel(body),
-            errors
+            ...taskPriorityViewModel(baseUrl, session),
+            errors,
+            errorSummary
         })
     }
     session.todo = session.todo || {}
     session.todo.taskPriority = Number(body.taskPriority)
-
-    console.log('session:>>>', session)
 
     return res.redirect(`${baseUrl}/task-deadline`)
 }

@@ -13,24 +13,22 @@ export function getTaskName(req, res) {
 
 export function postTaskName(req, res) {
     const { body, session } = req
-    const { errors } = body
+    //errors and errorSummary are added by the express-validator
+    const { errors, errorSummary } = body
 
     const { locals } = res
     const { baseUrl } = locals
-
-
-    if(errors) {
-        //TODO handle errors
-        return res.render(view, {
-            ...taskNameViewModel(body),
-            errors
-        })
-    }
-
+    
     session.todo = session.todo || {}
     session.todo.taskName = body.taskName
 
-    console.log('session:>>>', session)
-    
+    if(errors) {
+        return res.render(view, {
+            ...taskNameViewModel(baseUrl, session, body),
+            errors,
+            errorSummary
+        })
+    }
+
     return res.redirect(`${baseUrl}/task-content`)
 }

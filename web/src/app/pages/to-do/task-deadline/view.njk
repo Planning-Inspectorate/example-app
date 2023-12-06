@@ -12,7 +12,28 @@
                     namePrefix: "task-deadline",
                     hint: {
                         text: "If the task has a deadline, enter it below, or continue to the next page."
-                    }
+                    },
+                    items: [
+                        {
+                            classes: "govuk-input--width-2",
+                            id: "task-deadline-day",
+                            name: "day",
+                            value: taskDeadline['task-deadline-day']
+                        },
+                        {
+                            classes: "govuk-input--width-2",
+                            id: "task-deadline-month",
+                            name: "month",
+                            value: taskDeadline['task-deadline-month']
+                        },
+                        {
+                            classes: "govuk-input--width-4",
+                            id: "task-deadline-year",
+                            name: "year",
+                            value: taskDeadline['task-deadline-year']
+                        }
+                    
+                    ]
                 }) }}
 
                 {{ govukButton({

@@ -11,8 +11,11 @@
 
                 {{ govukRadios({
                     name: "taskPriority",
-                    id: "task-priority",
-                    items: priorityRadioOptions
+                    id: "taskPriority",
+                    items: priorityRadioOptions,
+                    errorMessage: errors['taskPriority'] and {
+                        text: errors['taskPriority'].msg
+                    }
                 }) }}
 
                 {{ govukButton({

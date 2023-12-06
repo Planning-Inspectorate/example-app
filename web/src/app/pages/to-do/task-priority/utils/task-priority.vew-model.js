@@ -1,17 +1,17 @@
 function getPriorityRadioOptions({ todo }) {
   const options = [
     {
-      value: '1',
+      value: 1,
       text: 'Low',
       checked: false
     },
     {
-      value: '2',
+      value: 2,
       text: 'Medium',
       checked: false
     },
     {
-      value: '3',
+      value: 3,
       text: 'High',
       checked: false
     }

@@ -1,5 +1,5 @@
 const mapSessionDataToSummaryRows = ({ todo }) => {
-    const { taskName, taskContent, taskDeadline, taskPriority } = todo || {}
+    const { taskName, taskContent, taskDeadlineFriendly, taskPriority } = todo || {}
         return [
             {
                 key: {
@@ -40,7 +40,7 @@ const mapSessionDataToSummaryRows = ({ todo }) => {
                     text: 'Task deadline'
                 },
                 value: {
-                    text: taskDeadline
+                    text: taskDeadlineFriendly
                 },
                 actions: {
                     items: [

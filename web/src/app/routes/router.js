@@ -8,6 +8,8 @@ const router = createRouter();
 
 // setup the handlers for the pages
 router.route('/').get(viewHomepage);
+
+// nested router containing to-do routes
 router.use('/to-do', toDoRouter);
 
 

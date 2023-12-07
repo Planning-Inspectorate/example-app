@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {string} baseUrl 
+ * @returns {Object}
+ */
 export function startViewModel(baseUrl) {
     return {
         backLinkUrl: '/',

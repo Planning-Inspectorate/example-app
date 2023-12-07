@@ -1,6 +1,11 @@
 import { getBackLinkUrl } from '../../_utils/get-back-link-url.js'
 import { getSubmitButtonText } from '../../_utils/get-submit-button-text.js'
 
+/**
+ * 
+ * @param {Object} session
+ * @returns {Array}
+ */
 function getPriorityRadioOptions({ todo }) {
   const options = [
     {
@@ -28,6 +33,13 @@ function getPriorityRadioOptions({ todo }) {
   })
 }
 
+/**
+ * 
+ * @param {String} baseUrl 
+ * @param {Object} session
+ * @param {String} mode
+ * @returns {Object}
+ */
 export function taskPriorityViewModel(baseUrl, session, mode) {
     return {
         backLinkUrl: getBackLinkUrl(baseUrl, mode, 'task-content'),

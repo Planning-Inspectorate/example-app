@@ -7,8 +7,9 @@ import config from '../app/config.js';
 
 const staticDir = config.staticDir;
 const require = createRequire(import.meta.url);
-// resolves to the node_modules folder with govuk-frontend in
-const govUkNodeModules = path.resolve(require.resolve('govuk-frontend'), '../../..');
+// resolves to the node_modules folder with govuk-frontend and @ministryofjustice/frontend in
+const govUkNodeModules = path.resolve(require.resolve('govuk-frontend'), '../../../..');
+const mojNodeModules = path.resolve(require.resolve('@ministryofjustice/frontend'), '../../../..');
 
 /**
  * Compile sass into a css file in the .static folder
@@ -17,10 +18,10 @@ const govUkNodeModules = path.resolve(require.resolve('govuk-frontend'), '../../
  * @returns {Promise<void>}
  */
 async function compileSass() {
-    const styleFile = path.join(config.srcDir, 'app', 'style.scss');
+    const styleFile = path.join(config.srcDir, 'app', 'sass/style.scss');
     const out = sass.compile(styleFile, {
         // ensure scss can find the govuk-frontend folder
-		loadPaths: [govUkNodeModules],
+		loadPaths: [govUkNodeModules, mojNodeModules],
         style: 'compressed',
         // don't show depreciate warnings for govuk
         // see https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#silence-deprecation-warnings-from-dependencies-in-dart-sass

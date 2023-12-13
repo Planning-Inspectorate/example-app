@@ -1,0 +1,76 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "../_components/priority-tag.njk" import priorityTag %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+
+{% set html %}
+    <h3 class="govuk-notification-banner__heading">
+        Task added successfully
+    </h3>
+    <p class="govuk-body">
+        <a class="govuk-link" href="?">Clear notification</a></p>
+{% endset %}
+
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {% if taskCreated %}
+                {{ govukNotificationBanner({
+                    html: html,
+                    type: "success"
+                }) }}
+            {% endif %}
+
+            {% set tableHead = [
+                {
+                    text: "Task"
+                },
+                {
+                    text: "Priority"
+                },
+                {
+                    text: "Deadline"
+                },
+                {
+                    text: "Action"
+                }
+            ]%}
+
+            {% set tableRows = [] %}
+
+            {% for todo in todoList %}
+                {% set tableRows = (tableRows.push([
+                    {
+                        text: todo.title
+                    },
+                    {
+                        text: priorityTag(todo.priority)
+                    },
+                    {
+                        text: todo.completeBy
+                    },
+                    {
+                        html: "<a class='govuk-link' href=" + todo.todoUrl + ">View</a>"
+                    }
+                ]), tableRows) %}
+            {% endfor %}
+
+            {{ govukButton({
+                text: "Add new task",
+                href: "task-name"
+            }) }}
+
+
+            {{ govukTable({
+                head: tableHead,
+                rows: tableRows
+            }) }}
+        </div>
+    </div>
+
+
+{% endblock %}

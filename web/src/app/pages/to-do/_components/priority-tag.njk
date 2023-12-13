@@ -1,0 +1,17 @@
+{% macro priorityTag(status) %}
+
+    {% set priorityTagColorClass = 'govuk-tag govuk-tag--turquoise' %}
+    {% set priorityLabel = 'Low' %}
+        
+	{% switch (status | string) %}
+		{% case '2' %}
+			{% set priorityTagColorClass = 'govuk-tag govuk-tag--yellow' %}
+            {% set priorityLabel = 'Medium' %}
+		{% case '3' %}
+			{% set priorityTagColorClass = 'govuk-tag govuk-tag--orange' %}
+            {% set priorityLabel = 'High' %}
+	{% endswitch %}
+
+    <strong class="{{priorityTagColorClass}} -white-space--nowrap">{{ priorityLabel }}</strong>
+
+{% endmacro %}

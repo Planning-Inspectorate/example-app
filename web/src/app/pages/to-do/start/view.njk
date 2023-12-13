@@ -1,0 +1,47 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body">
+                This is an example journey that aims to showcase common components and patterns used in our services. 
+            </p>
+
+            <p class="govuk-body">
+                Most of the files in this journey include an accompanying <code>README.md</code> file that explains the purpose of the file and how it can be used. 
+            </p>
+
+            <p class="govuk-body">
+                This journey contains examples of:
+            </p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>common nunjucks components and patterns</li>
+                <li>user inputs and validation</li>
+                <li>error handling</li>
+            </ul>
+
+            <hr class="govuk-section-break govuk-section-break--xl">
+
+            {{ govukButton({
+                text: "Start now",
+                href: nextPageURL,
+                isStartButton: true
+            }) }}
+
+            <p class="govuk-body">
+                TODO: Journey pages:
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>validation and error handling</li>
+                    <li>'edit' mode to update answers from check answers page</li>
+
+                </ul>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}

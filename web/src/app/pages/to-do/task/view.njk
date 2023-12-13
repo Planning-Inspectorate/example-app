@@ -1,0 +1,73 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "../_components/priority-tag.njk" import priorityTag %}
+
+<!--
+    NOTES:
+    -It's possible to nest nunjucks components together, here we use our priority tag component within the summaryList component
+-->
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="post" novalidate>
+                {{ govukSummaryList({
+                    card: {
+                        title: {
+                        html: task.title
+                        }
+                    },
+                    rows: [
+                        {
+                            key: {
+                                text: "Priority"
+                            },
+                            value: {
+                                html: priorityTag(task.priority)
+                            }
+                        },
+                        {
+                            key: {
+                                text: "Details"
+                            },
+                            value: {
+                                text: task.description
+                            }
+                        },
+                        {
+                            key: {
+                                text: "Created"
+                            },
+                            value: {
+                                text: task.createdAt
+                            }
+                        },
+                        {
+                            key: {
+                                text: "Complete by"
+                            },
+                            value: {
+                                text: task.completeBy
+                            }
+                        },
+                        {
+                            key: {
+                                text: "Created"
+                            },
+                            value: {
+                                text: task.createdAt
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Mark complete"
+            }) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

@@ -4,8 +4,6 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-{% set pageTitle = 'Welcome Home' %}
-
 {% block pageContent %}
 	<p class="govuk-body">
 		Some examples of govuk-frontend components are included on this page.
@@ -14,10 +12,10 @@
 	<p class="govuk-body">See the <a href="https://design-system.service.gov.uk/get-started/">GOV.UK Design System documentation</a> for more information.</p>
 
 	{% set banner %}
-	<p class="govuk-notification-banner__heading">
-		Important information can be added to a banner
-		<a class="govuk-notification-banner__link" href="#">which can include links</a>.
-	</p>
+		<p class="govuk-notification-banner__heading">
+			Important information can be added to a banner
+			<a class="govuk-notification-banner__link" href="#">which can include links</a>.
+		</p>
 	{% endset %}
 	{{ govukNotificationBanner({
 		html: banner
@@ -33,16 +31,16 @@
 			{{ govukSummaryList({
 				rows: [
 					{
-						key: {text: "Title"},
-						value: {text: "Summary List"}
+						key: { text: "Title" },
+						value: { text: "Summary List" }
 					},
 					{
-						key: {text: "Use Case"},
-						value: {text: "Summarise information, such as answers from a form"}
+						key: { text: "Use Case" },
+						value: { text: "Summarise information, such as answers from a form" }
 					},
 					{
-						key: {text: "Features"},
-						value: {text: "Action links can allow users to change answers to revisit steps"},
+						key: { text: "Features" },
+						value: { text: "Action links can allow users to change answers to revisit steps" },
 						actions: {
 							items: [
 								{

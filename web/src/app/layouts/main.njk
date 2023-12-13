@@ -3,10 +3,11 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
 
 {% block head %}
 	{# setup the header tags, to link to the styles #}
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="../../style.css"/>
 {% endblock %}
 
 {% block pageTitle %}
@@ -14,11 +15,30 @@
 {% endblock %}
 
 {% block header %}
-	{# setup the header tags, to link to the styles #}
 	{{ govukHeader({
 		homepageUrl: "/",
-		serviceName: 'Example To Do App'
+		serviceName: 'Example To Do App',
+		classes: 'pins-modded-header'
 	}) }}
+{% endblock %}
+
+{% block main %}
+  	{{ mojPrimaryNavigation({
+			label: 'Primary navigation',
+			items: [
+				{
+					text: 'To do',
+					href: '/to-do',
+					active: pageTitle === 'Example journey'
+				},
+				{
+					text: 'Challenges',
+					href: '/challenges',
+					active: pageTitle === 'Challenges'
+				}
+			]
+	}) }}
+	{{ super() }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -41,7 +61,7 @@
 						{{
 						govukErrorSummary({
 							titleText: "There is a problem",
-							errorList: errors | mapToErrorSummary
+							errorList: errorSummary
 						})
 					}}
 					</div>
@@ -54,7 +74,8 @@
 					<h1 class="govuk-heading-xl">
 						{% if pageCaption %}
 							<span class="govuk-caption-xl">{{ pageCaption }}</span>
-						{% endif %}{{ pageHeading or pageTitle }}
+						{% endif %}
+						{{ pageHeading or pageTitle }}
 					</h1>
 				</div>
 			</div>

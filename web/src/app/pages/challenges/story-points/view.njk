@@ -1,0 +1,50 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageHeading = "Agile story points" %}
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h3 class="govuk-heading-m">
+                1. What are story points?
+            </h3>
+            <p class="govuk-body">
+                The units of measurement in Agile help determine the effort required to complete a product backlog item or another piece of work. Teams assign story points based on the complexity of work, its amount, risk or uncertainty.
+            </p>
+
+            <h3 class="govuk-heading-m">    
+                2. When are story points assigned?
+            </h3>
+            <p class="govuk-body">
+                Story points are to be assigned to each story prior to organizing the stories vertically into sprints or releases. Typically, story points are done before sprint planning, during release planning, and even at a pre-planning phase. 
+            </p>
+
+            <h3 class="govuk-heading-m">
+                3. Why are story points better than hours?
+            </h3>
+            <p class="govuk-body">
+                Several reasons make story points better than hours, such as story points giving more accurate estimates, helping predict release dates, drastically reducing planning time, and helping teams enhance performance.
+            </p>
+
+            <h3 class="govuk-heading-m">
+                4. How are story points calculated in Agile?
+            </h3>
+            <p class="govuk-body">
+                To calculate story points, you have to assign a point value to every story. A story that is assigned two story points will require twice as much effort as a story that is assigned one story point. 
+            </p>
+            
+            <h3 class="govuk-heading-m">
+                5. Why use Fibonacci for story points?
+            </h3>
+            <p class="govuk-body">
+                Story points represent the complexity, size, and effort required for achieving or implementing a user story. Every story point is given a number from the Fibonacci scale. The Agile Fibonacci scale provides teams with a realistic way to approach estimates employing story points.
+            </p>
+            
+        </div>
+    </div>
+
+
+{% endblock %}

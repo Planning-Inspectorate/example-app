@@ -2,7 +2,7 @@ import express  from 'express'
 
 
 import { getChallengesStart } from './start/start.controller.js';
-import { getStoryPoints } from './story-points/storyPoints.controller.js';
+import { getStoryPoints } from './story-points/story-points.controller.js';
 
 
 const challengesRouter = express.Router();

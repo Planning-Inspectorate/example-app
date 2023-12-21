@@ -1,4 +1,4 @@
-import { getChallengeById } from '../_utils/get-challenge-by-id.js';
+// import { getChallengeById } from '../_utils/get-challenge-by-id.js';
 
 //[Challenges: 1a, 1b, 1c]
 

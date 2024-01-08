@@ -1,0 +1,29 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageContent %}
+   <p class="govuk-body">
+        dignissim convallis aenean et tortor at risus viverra adipiscing at in tellus integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque sit amet porttitor eget dolor morbi non arcu
+    </p>
+    <form method="post" novalidate>
+        {{ govukInput({
+            label: {
+                text: "Enter your email",
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            id: "email",
+            name: "email",
+            value: emailValue or errors['email'].value,
+            errorMessage: errors['email'] and {
+                text: errors['email'].msg
+            }
+        }) }}
+
+        {{ govukButton({
+            text: "Submit"
+        }) }}
+    </form>
+{% endblock %}

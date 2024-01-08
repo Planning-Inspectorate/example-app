@@ -7,11 +7,13 @@ import config from '../app/config.js';
 
 const staticDir = config.staticDir;
 const require = createRequire(import.meta.url);
-// resolves to the node_modules folder with govuk-frontend and @ministryofjustice/frontend in
-const govUkFrontend = path.resolve(require.resolve('govuk-frontend'), '../../../..');
-const mojNodeModules = path.resolve(require.resolve('@ministryofjustice/frontend'), '../../../..');
 
-console.log('CONFIG::>>>>', config);
+// resolves to <root>/node_modules/govuk-frontend/govuk/all.js than maps to `<root>`
+const govUkRoot = path.resolve(require.resolve('govuk-frontend'), '../../../..');
+
+// resolves to <root>/node_modules/@ministryofjustice/frontend/moj/all.js then maps to `<root>`
+const mojRoot = path.resolve(require.resolve('@ministryofjustice/frontend'), '../../../..');
+
 
 /**
  * Compile sass into a css file in the .static folder
@@ -23,7 +25,7 @@ async function compileSass() {
     const styleFile = path.join(config.srcDir, 'app', 'sass/style.scss');
     const out = sass.compile(styleFile, {
         // ensure scss can find the govuk-frontend and moj-fronted folders
-		loadPaths: [govUkFrontend, mojNodeModules],
+		loadPaths: [govUkRoot, mojRoot],
         style: 'compressed',
         // don't show depreciate warnings for govuk
         // see https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#silence-deprecation-warnings-from-dependencies-in-dart-sass
@@ -43,8 +45,8 @@ async function compileSass() {
  * @returns {Promise<void>}
  */
 async function copyAssets() {
-    const images = path.join(govUkFrontend, 'node_modules/govuk-frontend/govuk/assets/images');
-    const fonts = path.join(govUkFrontend, 'node_modules/govuk-frontend/govuk/assets/fonts');
+    const images = path.join(govUkRoot, 'node_modules/govuk-frontend/govuk/assets/images');
+    const fonts = path.join(govUkRoot, 'node_modules/govuk-frontend/govuk/assets/fonts');
 
     const staticImages = path.join(staticDir, 'assets', 'images');
     const staticFonts = path.join(staticDir, 'assets', 'fonts');

@@ -14,6 +14,7 @@ challengesRouter.get('/', getChallengesStart);
 challengesRouter.get('/story-points', getStoryPoints);
 challengesRouter.get('/user-input', getUserInput);
 challengesRouter.post('/user-input', emailValidator(), validationErrorHandler, postUserInput);
+challengesRouter.post('/user-input', postUserInput);
 challengesRouter.get('/success', getSuccess);
 
 export { challengesRouter }

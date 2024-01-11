@@ -12,8 +12,8 @@ export function getUserInput(req, res) {
 }
 
 export function postUserInput(req, res) {
-    const { body } = req
-    const { errors, errorSummary } = body
+    const { body, session } = req
+    const { email, errors, errorSummary } = body
 
     if(errors) {
         return res.render(view, {
@@ -22,13 +22,7 @@ export function postUserInput(req, res) {
             errorSummary
         })
     }
+    session.email = email 
     return res.redirect(`/challenges/success`)
 }
-
-
-
-
-
-
-
 

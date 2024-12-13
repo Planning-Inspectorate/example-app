@@ -1,9 +1,11 @@
+import dayjs from 'dayjs';
+
 function todoListMap(baseUrl, todoList)  {
     return todoList.map(todo => {
         return {
             title: todo.title,
             priority: todo.priority,
-            completeBy: todo.completeBy || '-',
+            completeBy: dayjs(todo.completeBy).format('DD/MM/YYYY') || '-',
             todoUrl: `${baseUrl}/task/${todo.id}`
         }
     });

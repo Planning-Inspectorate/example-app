@@ -7,6 +7,7 @@
   "version": "0.0.0",
   "description": "example application to showcase best practice and preferred technology stack",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "test",
     "commit": "cz"
@@ -29,5 +30,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13"
   }
 }

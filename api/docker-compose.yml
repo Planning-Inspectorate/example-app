@@ -1,0 +1,12 @@
+services:
+  db:
+    image: ${MYSQL_IMAGE}
+    container_name: ${MYSQL_CONTAINER_NAME}
+    env_file: .env
+    ports:
+      - "${MYSQL_PORT}:${MYSQL_PORT}"
+    volumes:
+      - "${MYSQL_VOLUME}:/var/lib/mysql"
+
+volumes:
+  ${MYSQL_VOLUME}:

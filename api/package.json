@@ -17,8 +17,5 @@
     "truncateTable": "node ./database/sql/truncate-table.js"
   },
   "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "json-server": "^0.17.4"
-  }
+  "license": "MIT"
 }

@@ -1,5 +1,5 @@
-import logger from '../../web/src/util/logger.js';
-import connection from '../sql-connection.js';
+import logger from '../../src/lib/logger.js';
+import connection from './sql-connection.js';
 
 const seedData = 'INSERT INTO to_do (id, userId, createdAt, updatedAt, completeBy, title, description, priority) VALUES ?';
 const values = [

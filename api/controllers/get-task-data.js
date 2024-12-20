@@ -1,4 +1,4 @@
-import connection from '../../api/sql-connection.js';
+import connection from '../database/sql/sql-connection.js';
 
 export async function getTaskData (req, res) {
     try {

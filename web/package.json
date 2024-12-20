@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node src/util/build.js",
     "start": "npm run build && node src/server.js",
-    "dev": "nodemon --watch src --ext js,scss,html,njk --exec \"npm run start\"",
+    "web": "nodemon --watch src --ext js,scss,html,njk --exec \"npm run start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

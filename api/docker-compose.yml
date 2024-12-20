@@ -6,7 +6,7 @@ services:
     ports:
       - "${MYSQL_PORT}:${MYSQL_PORT}"
     volumes:
-      - "${MYSQL_VOLUME}:/var/lib/mysql"
+      - example-app-db-volume:/var/lib/mysql
 
 volumes:
-  ${MYSQL_VOLUME}:
+  example-app-db-volume:

@@ -12,9 +12,9 @@ async function seedTable() {
     try {
         const [result] = await connection.query(seedData, [values]);
         logger.info('Data seeding completed');
-    } catch (err) {
-        logger.error('Error seeding data:', err);
-        throw err;
+    } catch (error) {
+        logger.error('Error seeding data:', error);
+        throw error;
     }
 }
 

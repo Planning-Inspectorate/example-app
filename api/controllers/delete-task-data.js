@@ -1,4 +1,5 @@
 import connection from '../database/sql/sql-connection.js';
+import logger from '../src/lib/logger.js';
 
 export async function deleteTaskData (req, res) {
     try {
@@ -7,7 +8,7 @@ export async function deleteTaskData (req, res) {
         res.status(200).json(results);
     }
     catch (error){
-        console.error('Error deleting task:', error);
+        logger.error('Error deleting task:', error);
         res.status(500).send('Internal server error');
     }
 };

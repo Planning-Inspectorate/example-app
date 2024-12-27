@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../../../../../web/src/app/config.js';
+import logger from '../../../../../src/util/logger.js';
 
 const baseUrl = config.apiUrl;
 
@@ -9,7 +10,7 @@ export async function getAllTasks() {
         const allTasks = data[0];
         return allTasks;
     } catch (error) {
-        console.error('Error fetching all tasks:', error);
+        logger.error('Error fetching all tasks:', error);
         throw error;
     }
 };
@@ -21,7 +22,7 @@ export async function getTaskById(taskId) {
         const task = taskArray[0];
         return task;
     } catch (error) {
-        console.error(`Error fetching task with ID ${taskId}:`, error);
+        logger.error('Error fetching task:', error);
         throw error;
     }
 };
@@ -31,7 +32,7 @@ export async function createTask(taskBody) {
         const { data: task } = await axios.post(`${baseUrl}/api/tasks`, taskBody);
         return task;
     } catch (error) {
-        console.error('Error creating task:', error);
+        logger.error('Error creating task:', error);
         throw error;
     }
 };
@@ -41,7 +42,7 @@ export async function deleteTask(taskId) {
         const { data: task } = await axios.delete(`${baseUrl}/api/tasks/${taskId}`);
         return task;
     } catch (error) {
-        console.error(`Error deleting task with ID ${taskId}:`, error);
+        logger.error('Error deleting task:', error);
         throw error;
     }
 };

@@ -8,7 +8,7 @@ export async function getTaskData (req, res) {
         res.status(200).json(results);
     } 
     catch (error) {
-        logger.error('Error fetching task:', error);
+        logger.error(error);
         res.status(500).send('Internal server error');
     }
 };

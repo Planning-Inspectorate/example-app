@@ -14,9 +14,9 @@ The API app is connected to a MySQL database which runs in a Docker container. T
 -	Add your own values to the .env file and save the changes.
 -   Open a terminal and navigate to the `example-app/api` directory.
 -	`docker compose up` to create and run the container.
--   `npm run createTable` to create the to-do table.
--   `npm run seedTable` to populate the to-do table with data.
--   `npm run truncateTable` to remove all data from the to-do table if required.
+-   `npm run table:create` to create the to-do table.
+-   `npm run table:seed` to populate the to-do table with data.
+-   `npm run table:truncate` to remove all data from the to-do table if required.
 -   `docker compose down` to stop and remove the container. This will not remove any data stored in the database.
 -	`docker compose down –v` to stop and remove the container and its volumes. This will destroy the database and its data.
 

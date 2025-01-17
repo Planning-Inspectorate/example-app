@@ -3,10 +3,10 @@ import connection from './sql-connection.js';
 
 const seedData = 'INSERT INTO to_do (id, userId, createdAt, updatedAt, completeBy, title, description, priority) VALUES ?';
 const values = [
-    [1, 1, "2023-11-20 03:50:33", "2023-11-21 03:50:33", "2023-12-21 03:50:33", "Task title 1", "Task description 1", 1],
-    [2, 1, "2023-11-19 03:50:33", "2023-11-20 03:50:33", "2023-12-21 03:50:33", "Task title 2", "Task description 2", 2],
-    [3, 1, "2023-11-21 03:50:33", "2023-11-21 03:50:33", "2023-12-21 03:50:33", "Task title 3", "Task description 3", 3]
-] 
+    [1, 1, "2023-11-20", "2023-11-21", "2023-12-21", "Task title 1", "Task description 1", 1],
+    [2, 1, "2023-11-19", "2023-11-20", "2023-12-21", "Task title 2", "Task description 2", 2],
+    [3, 1, "2023-11-21", "2023-11-21", "2023-12-21", "Task title 3", "Task description 3", 3]
+]
 
 async function seedTable() {
     try {

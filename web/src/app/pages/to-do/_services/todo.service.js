@@ -29,7 +29,7 @@ export async function getTaskById(taskId) {
 
 export async function createTask(taskBody) {
     try {
-        const { data: task } = await axios.post(`${baseUrl}/api/tasks`, taskBody);
+        const task = await axios.post(`${baseUrl}/api/tasks`, taskBody);
         return task;
     } catch (error) {
         logger.error('Error creating task:', error);

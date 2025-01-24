@@ -1,4 +1,4 @@
-import logger from '../../src/lib/logger.js';
+import logger from '../../../src/lib/logger.js';
 import connection from './sql-connection.js';
 
 const truncateToDoTable = 'TRUNCATE TABLE to_do';

@@ -12,9 +12,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "api": "node ./src/server.js",
-    "table:create": "node ./database/sql/create-table.js",
-    "table:seed": "node ./database/sql/seed-table.js",
-    "table:truncate": "node ./database/sql/truncate-table.js"
+    "table:create": "node ./src/database/sql/create-table.js",
+    "table:seed": "node ./src/database/sql/seed-table.js",
+    "table:truncate": "node ./src/database/sql/truncate-table.js"
   },
   "author": "",
   "license": "MIT"

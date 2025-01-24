@@ -1,5 +1,5 @@
 import connection from '../database/sql/sql-connection.js';
-import logger from '../src/lib/logger.js';
+import logger from '../lib/logger.js';
 
 export async function deleteTaskData (req, res) {
     try {

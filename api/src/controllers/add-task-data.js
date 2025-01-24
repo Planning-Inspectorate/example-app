@@ -1,6 +1,6 @@
 import connection from '../database/sql/sql-connection.js';
-import getTaskDeadlineDateInput from '../src/lib/get-task-deadline-date-input.js';
-import logger from '../src/lib/logger.js';
+import getTaskDeadlineDateInput from '../lib/get-task-deadline-date-input.js';
+import logger from '../lib/logger.js';
 
 export async function addTaskData (req, res) {
     try {

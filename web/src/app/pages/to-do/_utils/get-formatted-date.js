@@ -1,11 +1,7 @@
 import dayjs from 'dayjs';
 
 const getFormattedDate = (timestamp) => {
-    if (timestamp) {
-        return dayjs(timestamp).format('DD/MM/YYYY');
-    } else {
-        return '';
-    }
+    return timestamp ? dayjs(timestamp).format('DD/MM/YYYY') : '';
 };
 
 export default getFormattedDate;

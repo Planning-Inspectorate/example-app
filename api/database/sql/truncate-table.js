@@ -6,11 +6,13 @@ const truncateToDoTable = 'TRUNCATE TABLE to_do';
 async function truncateTable() {
     try {
         const [result] = await connection.query(truncateToDoTable);
-        logger.info('To do table truncated');
+        logger.info('Table truncated');
     } catch (error) {
-        logger.error('Error truncating to do table:', error);
+        logger.error('Error truncating table:', error);
         throw error;
     }
+
+    connection.end();
 }
 
 truncateTable();

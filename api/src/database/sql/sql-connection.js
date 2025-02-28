@@ -4,7 +4,6 @@ import logger from '../../lib/logger.js';
 
 dotenv.config({ path: './.env' })
 
-
 async function createConnection() {
     try {
         const connection = await mysql.createConnection({

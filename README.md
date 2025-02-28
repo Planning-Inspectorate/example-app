@@ -6,6 +6,10 @@ An example application to showcase best practice and preferred technology stack.
 - [Node.js](https://nodejs.org/en)
 - [Docker](https://docs.docker.com/get-docker/)
 
+## Installing dependencies
+
+Run `npm ci` from the root of the project, the `api` directory and the `web` directory.
+
 ## Database setup
 
 The API app is connected to a MySQL database which runs in a Docker container. The container is created using the config in the `docker-compose.yml` file. The environment variables used in the config are stored in a .env file.
@@ -37,3 +41,8 @@ Web app:
 -	`npm run web` to start the app.
 -   Go to [localhost:8080](http://localhost:8080/) to interact with the app.
 -	`ctrl c` to stop the app.
+
+## Running the tests
+
+- To run all the tests in a directory, navigate to that directory and run `npm run test`
+- To run a single test run `npm run test <file pathway>` from the directory.

@@ -4,7 +4,7 @@ import logger from '../lib/logger.js';
 export async function getTaskData (req, res) {
     try {
         const taskId = req.params.taskId;
-        const results = await connection.query('SELECT * FROM to_do WHERE id = ?', taskId);
+        const results = await connection.query('SELECT * FROM to_do WHERE id = ?', taskId); 
         res.status(200).json(results);
     } 
     catch (error) {

@@ -3,29 +3,7 @@
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
 import logger from '../../lib/logger.js';
-
-const tasks = [
-    {
-        id: 1,
-        userId: 123,
-        createdAt: '2023-01-01 00:00:00',
-        updatedAt: '2023-01-02 00:00:00',
-        completeBy: '2023-01-03 00:00:00',
-        title: 'Task 1',
-        description: 'Description of Task 1',
-        priority: 1
-    },
-    {
-        id: 2,
-        userId: 123,
-        createdAt: '2023-01-01 00:00:00',
-        updatedAt: '2023-01-02 00:00:00',
-        completeBy: '2023-01-03 00:00:00',
-        title: 'Task 2',
-        description: 'Description of Task 2',
-        priority: 1
-    },
-]
+import { tasks } from '../data/task-data.js';
 
 jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     const mockQuery = jest.fn().mockResolvedValue([tasks]);

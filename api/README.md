@@ -8,13 +8,21 @@
 |   +-- controllers
 |       +-- ...
 |   +-- database
-|       +-- prisma
 |       +-- sql
 |           +-- ...
 |   +-- lib
 |       +-- ...
 |   +-- routes
 |       +-- ...
+    +-- tests
+        +-- data
+            +-- ...
+        +-- integration
+            +-- ...
+        +-- unit
+            +-- ...
+|   +-- app.js
+|   +-- server.js
 ```
 
 | Directory | Description |
@@ -23,6 +31,7 @@
 | `database/sql` | Connection function and scripts written with SQL |
 | `lib`          | Shared helper functions                          |
 | `routes`       | API routes                                       |
+| `tests`        | Test suite                                       |
 
 ## API Endpoints
 

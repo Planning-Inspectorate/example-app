@@ -2,9 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { apiRouter } from './routes/router.js';
 
-const app = express();
+export function createApp() {
+    const app = express();
 
-app.use(bodyParser.json());
-app.use('/api', apiRouter);
+    app.use(bodyParser.json());
+    app.use('/api', apiRouter);
 
-export { app };
+    return app;
+}

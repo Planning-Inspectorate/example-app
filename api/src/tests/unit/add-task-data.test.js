@@ -3,13 +3,7 @@
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
 import logger from '../../lib/logger.js';
-
-const task = {
-    title: 'Task 1',
-    description: 'Description of Task 1',
-    completeBy: '2025-06-01 00:00:00',
-    priority: 1
-};
+import { taskInput, task } from '../data/task-data.js';
 
 jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     const mockQuery = jest.fn().mockResolvedValue([task]);
@@ -37,16 +31,7 @@ describe('addTaskData', () => {
         const req = httpMocks.createRequest({
             method: 'POST',
             url: '/api/tasks',
-            body: { 
-                    title: 'Task 1',
-                    description: 'Description of Task 1',
-                    taskDeadline: {
-                        'task-deadline-day': '01',
-                        'task-deadline-month': '06',
-                        'task-deadline-year': '2025' 
-                    },
-                    priority: 1
-            }
+            body: taskInput
         });
 
         const res = httpMocks.createResponse();
@@ -63,16 +48,7 @@ describe('addTaskData', () => {
         const req = httpMocks.createRequest({
             method: 'POST',
             url: '/api/tasks',
-            body: { 
-                title: 'Task 1',
-                description: 'Description of Task 1',
-                taskDeadline: {
-                    'task-deadline-day': '01',
-                    'task-deadline-month': '06',
-                    'task-deadline-year': '2025' 
-                },
-                priority: 1
-            }
+            body: taskInput
         });
 
         const res = httpMocks.createResponse();

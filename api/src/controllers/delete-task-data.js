@@ -5,7 +5,7 @@ export async function deleteTaskData (req, res) {
     try {
         const taskId = req.params.taskId;
         const results = await connection.query('DELETE FROM to_do WHERE id = ?', taskId);
-        res.status(200).json(results);
+        (res.status(204).json(results));
     }
     catch (error){
         logger.error(error);

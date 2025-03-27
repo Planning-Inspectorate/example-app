@@ -1,6 +1,8 @@
-import { app } from './app.js';
+import { createApp } from './app.js';
 import config from '../src/lib/config.js';
 import logger from '../src/lib/logger.js';
+
+const app = createApp();
 
 app.set('http-port', config.httpPort);
 

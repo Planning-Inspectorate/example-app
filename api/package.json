@@ -5,12 +5,14 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "@jest/globals": "^29.7.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "mysql2": "^3.11.3"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules C:/repositories/example-app/node_modules/jest/bin/jest.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "api": "node ./src/server.js",
     "table:create": "node ./src/database/sql/create-table.js",
     "table:seed": "node ./src/database/sql/seed-table.js",

@@ -3,17 +3,7 @@
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
 import logger from '../../lib/logger.js';
-
-const task = {
-    id: 1,
-    userId: 123,
-    createdAt: '2023-01-01 00:00:00',
-    updatedAt: '2023-01-02 00:00:00',
-    completeBy: '2023-01-03 00:00:00',
-    title: 'Task 1',
-    description: 'Description of Task 1',
-    priority: 1
-};
+import { task } from '../data/task-data.js';
 
 jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     const mockQuery = jest.fn().mockResolvedValue([task]);
@@ -31,9 +21,9 @@ describe('deleteTaskData', () => {
     it('should delete a task', async () => {
         const req = httpMocks.createRequest({
             method: 'DELETE',
-            url: '/api/tasks/1',
+            url: '/api/tasks/3',
             params: {
-                taskId: 1
+                taskId: 3
             }
         });
 
@@ -43,16 +33,16 @@ describe('deleteTaskData', () => {
 
         await deleteTaskData(req, res);
 
-        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.status).toHaveBeenCalledWith(204);
         expect(res.json).toHaveBeenCalledWith([task]);
     });
 
     it('should return an error', async () => {
         const req = httpMocks.createRequest({
             method: 'DELETE',
-            url: '/api/tasks/1',
+            url: '/api/tasks/3',
             params: {
-                taskId: 1
+                taskId: 3
             }
         });
 

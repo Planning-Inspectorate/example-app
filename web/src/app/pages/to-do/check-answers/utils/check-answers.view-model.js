@@ -1,3 +1,15 @@
+function prettifyTaskCategory(taskCategory) {
+    switch (taskCategory) {
+        case 'work':
+            return 'Work'
+        case 'hobby':
+            return 'Hobby'
+        case 'other':
+            return 'Other'
+    }
+    return taskCategory
+}
+
 function mapPriorityLevelToText(priority) {
     switch (priority) {
         case 1:
@@ -10,7 +22,7 @@ function mapPriorityLevelToText(priority) {
 }
 
 const mapSessionDataToSummaryRows = (baseUrl, { todo }) => {
-    const { taskName, taskContent, taskDeadlineFriendly, taskPriority } = todo || {}
+    const { taskName, taskContent, taskDeadlineFriendly, taskPriority, taskCategory } = todo || {}
     return [
         {
             key: {
@@ -42,6 +54,23 @@ const mapSessionDataToSummaryRows = (baseUrl, { todo }) => {
                         href: `${baseUrl}/task-content?mode=edit`,
                         text: 'Change',
                         visuallyHiddenText: 'task content'
+                    }
+                ]
+            }
+        },
+        {
+            key: {
+                text: 'Task category'
+            },
+            value: {
+                text: prettifyTaskCategory(taskCategory)
+            },
+            actions: {
+                items: [
+                    {
+                        href: `${baseUrl}/task-category?mode=edit`,
+                        text: 'Change',
+                        visuallyHiddenText: 'task category'
                     }
                 ]
             }

@@ -5,11 +5,11 @@ import logger from '../lib/logger.js';
 export async function addTaskData (req, res) {
     try {
         const task = req.body;
-        const { taskDeadline, title, description, priority } = task;
+        const { taskDeadline, title, description, priority, category } = task;
         
         const formattedTaskDeadline = getTaskDeadlineDateInput(taskDeadline);
 
-        const results = await connection.query('INSERT INTO to_do (completeBy, title, description, priority) VALUES (?, ?, ?, ?)', [formattedTaskDeadline, title, description, priority]);
+        const results = await connection.query('INSERT INTO to_do (completeBy, title, description, priority, category) VALUES (?, ?, ?, ?, ?)', [formattedTaskDeadline, title, description, priority, category]);
         res.status(201).json(results);
     }
     catch (error) {

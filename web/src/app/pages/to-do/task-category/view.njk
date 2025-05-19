@@ -1,0 +1,27 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageContent %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="" method="post" novalidate>
+
+                {{ govukRadios({
+                    name: "taskCategory",
+                    id: "taskCategory",
+                    items: categoryRadioOptions,
+                    errorMessage: errors['taskCategory'] and {
+                        text: errors['taskCategory'].msg
+                    }
+                }) }}
+
+                {{ govukButton({
+                    text: submitButtonText
+                }) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

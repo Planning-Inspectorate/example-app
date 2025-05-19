@@ -1,0 +1,13 @@
+{% macro categoryTag(status) %}
+
+	{% if status=='Work' or status=='work' %}
+		{% set categoryTagColorClass = 'govuk-tag govuk-tag--pink' %}
+	{% elseif status=='Hobby' or status=='hobby' %}
+		{% set categoryTagColorClass = 'govuk-tag govuk-tag--purple' %}
+	{% else %}
+		{% set categoryTagColorClass = 'govuk-tag govuk-tag--grey' %}
+	{% endif %}
+
+    <strong class="{{categoryTagColorClass}} -white-space--nowrap">{{ status }}</strong>
+
+{% endmacro %}

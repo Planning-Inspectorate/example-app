@@ -42,7 +42,7 @@ function getPriorityRadioOptions({ todo }) {
  */
 export function taskPriorityViewModel(baseUrl, session, mode) {
     return {
-        backLinkUrl: getBackLinkUrl(baseUrl, mode, 'task-content'),
+        backLinkUrl: getBackLinkUrl(baseUrl, mode, 'task-category'),
         submitButtonText: getSubmitButtonText(mode),
         pageHeading: 'Select priority level',
         priorityRadioOptions: getPriorityRadioOptions(session)

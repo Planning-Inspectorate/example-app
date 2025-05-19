@@ -1,6 +1,6 @@
 import { isObjectEmpty } from '../../../../lib/is-object-empty.js'
 
-const todoRequiredKeys = ['taskName', 'taskPriority']
+const todoRequiredKeys = ['taskName', 'taskPriority', 'taskCategory']
 
 /**
  * @typedef Task
@@ -9,6 +9,7 @@ const todoRequiredKeys = ['taskName', 'taskPriority']
  * @property { string } taskContent
  * @property { string } taskDeadline
  * @property { number } taskPriority
+ * @property { string } taskCategory
  * 
  */
 
@@ -44,6 +45,7 @@ export function getTaskPayload(task) {
         title: task.taskName,
         description: task.taskContent || null,
         taskDeadline: task.taskDeadline || null,
-        priority: task.taskPriority
+        priority: task.taskPriority,
+        category: task.taskCategory
     }
 }

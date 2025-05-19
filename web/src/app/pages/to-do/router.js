@@ -7,6 +7,7 @@ import { getToDoStart }  from './start/start.controller.js';
 import { getToDoList } from './list/list.controller.js';
 import { getTaskName, postTaskName } from './task-name/task-name.controller.js';
 import { getTaskContent, postTaskContent } from './task-content/task-content.controller.js';
+import { getTaskCategory, postTaskCategory } from './task-category/task-category.controller.js';
 import { getTaskPriority, postTaskPriority } from './task-priority/task-priority.controller.js';
 import { getTaskDeadline, postTaskDeadline } from './task-deadline/task-deadline.controller.js';
 import { getCheckAnswers, postCheckAnswers } from './check-answers/check-answers.controller.js';
@@ -15,6 +16,7 @@ import { getTask, postTask } from './task/task.controller.js';
 //validators
 import { taskNameValidator } from './task-name/task-name-validator.js';
 import { taskPriorityValidator } from './task-priority/task-priority-validator.js';
+import { taskCategoryValidator } from './task-category/task-category-validator.js';
 import { validationErrorHandler } from '../../validators/validation-error-handler.js';
 
 
@@ -35,6 +37,10 @@ toDoRouter
 toDoRouter
     .get('/task-content', toDoMiddleware, getTaskContent)
     .post('/task-content', toDoMiddleware, postTaskContent)
+
+toDoRouter
+    .get('/task-category', toDoMiddleware, getTaskCategory)
+    .post('/task-category', toDoMiddleware, taskCategoryValidator(), validationErrorHandler, postTaskCategory)
 
 toDoRouter
     .get('/task-priority', toDoMiddleware, getTaskPriority)

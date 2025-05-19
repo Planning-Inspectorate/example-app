@@ -33,5 +33,5 @@ export function postTaskContent(req, res) {
         return res.redirect(`${baseUrl}/check-answers`)
     }
 
-    return res.redirect(`${baseUrl}/task-priority`)
+    return res.redirect(`${baseUrl}/task-category`)
 }

@@ -3,6 +3,8 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "../_components/priority-tag.njk" import priorityTag %}
+{% from "../_components/category-tag.njk" import categoryTag %}
+
 
 <!--
     NOTES:
@@ -20,6 +22,14 @@
                         }
                     },
                     rows: [
+                        {
+                            key: {
+                                text: "Category"
+                            },
+                            value: {
+                                html: categoryTag(task.category)
+                            }
+                        },
                         {
                             key: {
                                 text: "Priority"

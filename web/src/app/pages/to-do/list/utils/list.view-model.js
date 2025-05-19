@@ -6,6 +6,7 @@ function todoListMap(baseUrl, todoList)  {
 
         return {
             title: todo.title,
+            category: todo.category,
             priority: todo.priority,
             completeBy: taskDeadline,
             todoUrl: `${baseUrl}/task/${todo.id}`

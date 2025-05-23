@@ -20,7 +20,7 @@ const { createApp } = await import ('../../app.js');
 
 let app;
 
-describe ('DELETE /api/tasks/:id', () => {
+describe ('DELETE /tasks/:id', () => {
     beforeAll(() => {
         app = createApp();
     });
@@ -28,7 +28,7 @@ describe ('DELETE /api/tasks/:id', () => {
     it('should delete a task', async () => {
         query.mockResolvedValueOnce({});
 
-        const response = await request(app).delete('/api/tasks/1');
+        const response = await request(app).delete('/tasks/1');
 
         expect(response.status).toEqual(204);
         expect(response.body).toEqual({});
@@ -40,7 +40,7 @@ describe ('DELETE /api/tasks/:id', () => {
 
         query.mockRejectedValue(error);
 
-        const response = await request(app).delete('/api/tasks/1');
+        const response = await request(app).delete('/tasks/1');
 
         expect(response.status).toEqual(500);
         expect(response.text).toEqual('Internal server error');

@@ -21,7 +21,7 @@ const { createApp } = await import ('../../app.js');
 
 let app;
 
-describe('GET /api/tasks', () => {
+describe('GET /tasks', () => {
     beforeAll(() => {
         app = createApp();
     });
@@ -29,7 +29,7 @@ describe('GET /api/tasks', () => {
     it('should return the correct data', async () => {
         query.mockResolvedValueOnce(tasks);
 
-        const response = await request(app).get('/api/tasks');
+        const response = await request(app).get('/tasks');
 
         expect(response.status).toEqual(200);
         expect(response.body).toEqual(tasks);
@@ -41,7 +41,7 @@ describe('GET /api/tasks', () => {
 
         query.mockRejectedValue(error);
 
-        const response = await request(app).get('/api/tasks');
+        const response = await request(app).get('/tasks');
 
         expect(response.status).toEqual(500);
         expect(response.text).toEqual('Internal server error');

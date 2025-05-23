@@ -6,9 +6,8 @@ const baseUrl = config.apiUrl;
 
 export async function getAllTasks() {
     try {
-        const { data } = await axios.get(`${baseUrl}/api/tasks`);
-        const allTasks = data[0];
-        return allTasks;
+        const { data: tasks } = await axios.get(`${baseUrl}/tasks`);
+        return tasks[0];
     } catch (error) {
         logger.error('Error fetching all tasks:', error);
         throw error;
@@ -17,10 +16,9 @@ export async function getAllTasks() {
 
 export async function getTaskById(taskId) {
     try {
-        const { data } = await axios.get(`${baseUrl}/api/tasks/${taskId}`);
-        const taskArray = data[0];
-        const task = taskArray[0];
-        return task;
+        const { data } = await axios.get(`${baseUrl}/tasks/${taskId}`);
+        const tasks = data[0];
+        return tasks[0];
     } catch (error) {
         logger.error('Error fetching task:', error);
         throw error;
@@ -29,7 +27,7 @@ export async function getTaskById(taskId) {
 
 export async function createTask(taskBody) {
     try {
-        const task = await axios.post(`${baseUrl}/api/tasks`, taskBody);
+        const task = await axios.post(`${baseUrl}/tasks`, taskBody);
         return task;
     } catch (error) {
         logger.error('Error creating task:', error);
@@ -39,7 +37,7 @@ export async function createTask(taskBody) {
 
 export async function deleteTask(taskId) {
     try {
-        const { data: task } = await axios.delete(`${baseUrl}/api/tasks/${taskId}`);
+        const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
         return task;
     } catch (error) {
         logger.error('Error deleting task:', error);

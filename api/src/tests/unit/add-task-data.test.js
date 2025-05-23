@@ -15,22 +15,13 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     };
 });
 
-jest.unstable_mockModule('../../lib/get-task-deadline-date-input.js', () => {
-    const mockGetTaskDeadlineDateInput = jest.fn().mockReturnValue('2025-06-01 00:00:00');
-
-    return {
-        __esModule: true,   
-        default: mockGetTaskDeadlineDateInput
-    };
-});
-
 const { addTaskData } = (await import('../../controllers/add-task-data.js'));
 
 describe('addTaskData', () => {
     it('should add a task', async () => {
         const req = httpMocks.createRequest({
             method: 'POST',
-            url: '/api/tasks',
+            url: '/tasks',
             body: taskInput
         });
 
@@ -47,7 +38,7 @@ describe('addTaskData', () => {
     it('should return an error', async () => {
         const req = httpMocks.createRequest({
             method: 'POST',
-            url: '/api/tasks',
+            url: '/tasks',
             body: taskInput
         });
 

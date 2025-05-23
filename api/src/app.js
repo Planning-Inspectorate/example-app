@@ -6,7 +6,7 @@ export function createApp() {
     const app = express();
 
     app.use(bodyParser.json());
-    app.use('/api', apiRouter);
+    app.use('/', apiRouter);
 
     return app;
 }

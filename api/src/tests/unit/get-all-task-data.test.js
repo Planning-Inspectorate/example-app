@@ -21,7 +21,7 @@ describe('getAllTaskData', () => {
     it('should return all tasks', async () => {
         const req = httpMocks.createRequest({
             method: 'GET',
-            url: '/api/tasks',
+            url: '/tasks',
         });
 
         const res = httpMocks.createResponse();
@@ -37,7 +37,7 @@ describe('getAllTaskData', () => {
     it('should return an error', async () => {
         const req = httpMocks.createRequest({
             method: 'GET',
-            url: '/api/tasks',
+            url: '/tasks',
         });
 
         const res = httpMocks.createResponse();

@@ -46,3 +46,12 @@ Web app:
 
 - To run all the tests in a directory, navigate to that directory and run `npm run test`
 - To run a single test run `npm run test <file pathway>` from the directory.
+
+## Generating API documentation
+
+The API is documented using OpenAI (formerly Swagger).
+
+- Navigate to the `example-app/api` directory.
+- Run `npm gen-api-spec` to generate API spec as a JSON file.
+- Run `npm run api`.
+- View the documentation at `http://localhost:3000/api-docs/`.

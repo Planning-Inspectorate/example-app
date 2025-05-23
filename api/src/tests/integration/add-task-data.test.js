@@ -15,22 +15,13 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     };
 });
 
-jest.unstable_mockModule('../../lib/get-task-deadline-date-input.js', () => {
-    const mockGetTaskDeadlineDateInput = jest.fn().mockReturnValue('2025-06-01 00:00:00');
-
-    return {
-        __esModule: true,
-        default: mockGetTaskDeadlineDateInput
-    };
-});
-
 const { query } = (await import('../../database/sql/sql-connection.js')).default;
 
 const { createApp } = await import ('../../app.js');
 
 let app;
 
-describe('POST /api/tasks', () => {
+describe('POST /tasks', () => {
     beforeAll(() => {
         app = createApp();
     });
@@ -39,7 +30,7 @@ describe('POST /api/tasks', () => {
         query.mockResolvedValueOnce(task);
 
         const response = await request(app)
-            .post('/api/tasks')
+            .post('/tasks')
             .send(taskInput);
 
         expect(response.status).toEqual(201);
@@ -53,7 +44,7 @@ describe('POST /api/tasks', () => {
         query.mockRejectedValue(error);
 
         const response = await request(app)
-            .post('/api/tasks')
+            .post('/tasks')
             .send(taskInput);
 
         expect(response.status).toEqual(500);

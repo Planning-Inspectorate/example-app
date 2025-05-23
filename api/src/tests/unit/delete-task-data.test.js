@@ -21,7 +21,7 @@ describe('deleteTaskData', () => {
     it('should delete a task', async () => {
         const req = httpMocks.createRequest({
             method: 'DELETE',
-            url: '/api/tasks/3',
+            url: '/tasks/3',
             params: {
                 taskId: 3
             }
@@ -40,7 +40,7 @@ describe('deleteTaskData', () => {
     it('should return an error', async () => {
         const req = httpMocks.createRequest({
             method: 'DELETE',
-            url: '/api/tasks/3',
+            url: '/tasks/3',
             params: {
                 taskId: 3
             }

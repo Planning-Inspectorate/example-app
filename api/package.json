@@ -9,14 +9,17 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "api": "node ./src/server.js",
     "table:create": "node ./src/database/sql/create-table.js",
     "table:seed": "node ./src/database/sql/seed-table.js",
-    "table:truncate": "node ./src/database/sql/truncate-table.js"
+    "table:truncate": "node ./src/database/sql/truncate-table.js",
+    "gen-api-spec": "node ./src/swagger.js"
   },
   "author": "",
   "license": "MIT",

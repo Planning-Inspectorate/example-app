@@ -5,6 +5,7 @@ import httpMocks from 'node-mocks-http';
 import logger from '../../lib/logger.js';
 import { taskInput, task } from '../data/task-data.js';
 
+// mock the SQL connection module to avoid actual database calls
 jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     const mockQuery = jest.fn().mockResolvedValue([task]);
     const mockEnd = jest.fn(); 
@@ -17,6 +18,7 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
 
 const { addTaskData } = (await import('../../controllers/add-task-data.js'));
 
+// test suite for the addTaskData controller function
 describe('addTaskData', () => {
     it('should add a task', async () => {
         const req = httpMocks.createRequest({

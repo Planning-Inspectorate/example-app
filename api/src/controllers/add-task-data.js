@@ -1,6 +1,12 @@
 import connection from '../database/sql/sql-connection.js';
 import logger from '../lib/logger.js';
 
+/**
+ * Add task data to the database
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 export async function addTaskData (req, res) {
     try {
         const task = req.body;

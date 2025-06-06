@@ -7,10 +7,13 @@ import { getTaskData } from '../controllers/get-task-data.js';
 import { addTaskData } from '../controllers/add-task-data.js';
 import { deleteTaskData } from '../controllers/delete-task-data.js';
 
+// create an express router, for handling different paths within the API
 const apiRouter = express.Router();
 
+// set up the Swagger UI for API documentation
 apiRouter.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// set up the handlers for the API endpoints and Swagger documentation
 apiRouter.get(
     '/tasks',
     /*

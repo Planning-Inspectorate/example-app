@@ -8,6 +8,10 @@ const values = [
     [3, 1, "2023-11-21 00:00:00", "2023-11-21 00:00:00", "2023-12-21 00:00:00", "Task title 3", "Task description 3", 3]
 ]
 
+/**
+ * Seed the to_do table with initial data
+ * @returns {Promise<void>}
+ */
 async function seedTable() {
     try {
         const [result] = await connection.query(seedData, [values]);
@@ -17,7 +21,7 @@ async function seedTable() {
         throw error;
     }
 
-    connection.end();
+    await connection.end();
 }
 
 seedTable();

@@ -1,6 +1,12 @@
 import connection from '../database/sql/sql-connection.js';
 import logger from '../lib/logger.js';
 
+/**
+ * Delete task data from the database
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 export async function deleteTaskData (req, res) {
     try {
         const taskId = req.params.taskId;

@@ -1,6 +1,7 @@
 import swaggerAutogen from 'swagger-autogen';
 import logger from './lib/logger.js';
 
+// define the Swagger specification for the API
 const spec = {
     info: {
         version: '1.0.0',
@@ -25,6 +26,7 @@ const spec = {
 const outputFile = './swagger-output.json';
 const routes = ['./routes/router.js'];
 
+// generate the Swagger documentation to be rendered in the Swagger UI
 swaggerAutogen()(outputFile, routes, spec).then(() => {
     logger.info('Swagger spec generated');
 }).catch((error) => {

@@ -1,3 +1,4 @@
+// mock task data to be used in tests
 const tasks = [
     {
         id: 1,

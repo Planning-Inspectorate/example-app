@@ -15,6 +15,9 @@ export async function getAllTasks() {
 };
 
 export async function getTaskById(taskId) {
+    if (!/^[0-9]+$/.test(taskId)) {
+        throw new Error('Task ID is required to fetch the task');
+    }
     try {
         const { data } = await axios.get(`${baseUrl}/tasks/${taskId}`);
         const tasks = data[0];
@@ -36,6 +39,9 @@ export async function createTask(taskBody) {
 };
 
 export async function deleteTask(taskId) {
+    if (!/^[0-9]+$/.test(taskId)) {
+        throw new Error('Task ID is required for deletion');
+    }
     try {
         const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
         return task;

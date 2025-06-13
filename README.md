@@ -52,6 +52,6 @@ Web app:
 The API is documented using OpenAI (formerly Swagger).
 
 - Navigate to the `example-app/api` directory.
-- Run `npm gen-api-spec` to generate API spec as a JSON file.
+- Run `npm run gen-api-spec` to generate API spec as a JSON file.
 - Run `npm run api`.
 - View the documentation at `http://localhost:3000/api-docs/`.

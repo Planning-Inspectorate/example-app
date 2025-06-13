@@ -1,23 +1,52 @@
 import axios from 'axios';
+import config from '../../../../../../web/src/app/config.js';
+import logger from '../../../../../src/util/logger.js';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = config.apiUrl;
 
 export async function getAllTasks() {
-    const { data: allTasks } = await axios.get(`${baseUrl}/todos`);
-    return allTasks
-}
+    try {
+        const { data: tasks } = await axios.get(`${baseUrl}/tasks`);
+        return tasks[0];
+    } catch (error) {
+        logger.error('Error fetching all tasks:', error);
+        throw error;
+    }
+};
 
 export async function getTaskById(taskId) {
-    const { data: task } = await axios.get(`${baseUrl}/todos/${taskId}`);
-    return task
-}
+    if (!/^[0-9]+$/.test(taskId)) {
+        throw new Error('Task ID is required to fetch the task');
+    }
+    try {
+        const { data } = await axios.get(`${baseUrl}/tasks/${taskId}`);
+        const tasks = data[0];
+        return tasks[0];
+    } catch (error) {
+        logger.error('Error fetching task:', error);
+        throw error;
+    }
+};
 
 export async function createTask(taskBody) {
-    const { data: task } = await axios.post(`${baseUrl}/todos`, taskBody);
-    return task
-}
+    try {
+        const task = await axios.post(`${baseUrl}/tasks`, taskBody);
+        return task;
+    } catch (error) {
+        logger.error('Error creating task:', error);
+        throw error;
+    }
+};
 
 export async function deleteTask(taskId) {
-    const { data: task } = await axios.delete(`${baseUrl}/todos/${taskId}`);
-    return task
-}
+    if (!/^[0-9]+$/.test(taskId)) {
+        throw new Error('Task ID is required for deletion');
+    }
+    try {
+        const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
+        return task;
+    } catch (error) {
+        logger.error('Error deleting task:', error);
+        throw error;
+    }
+};

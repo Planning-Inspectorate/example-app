@@ -1,4 +1,6 @@
 {% extends "layouts/main.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 
 {% block pageContent %}
     <div class="govuk-grid-row">
@@ -9,6 +11,11 @@
                 Challenges are split into groups based on their complexity and scored using story points.
             </p>
 
+            {{ govukButton({
+                text: "Start now",
+                href: nextPageURL,
+                isStartButton: true
+            }) }}
         </div>
     </div>
 {% endblock %}

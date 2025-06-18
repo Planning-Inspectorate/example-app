@@ -1,0 +1,37 @@
+{% extends "layouts/main.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block pageContent %}
+    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam.</p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="" method="post" novalidate>
+                {{ govukInput({
+                    label: {
+                        text: "Enter your email"
+                    },
+                    hint: {
+                        text: "We'd like to send you some information"
+                    },
+                    id: "email",
+                    name: "email",
+                    type: "email",
+                    autocomplete: "email",
+                    spellcheck: false,
+                    value: emailAddress,
+                    errorMessage: errors and {
+                        text: errors[0]['msg']
+                    }
+                    })
+                }}
+
+                {{ govukButton({
+                    text: "Submit email"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

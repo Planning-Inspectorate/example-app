@@ -6,32 +6,30 @@
 .
 +-- src
 |   +-- controllers
-|       +-- ...
+|   |   +-- ...
 |   +-- database
-|       +-- sql
-|           +-- ...
+|   |   +-- sql
+|   |   |   +-- ...
 |   +-- lib
-|       +-- ...
+|   |   +-- ...
 |   +-- routes
-|       +-- ...
-    +-- tests
-        +-- data
-            +-- ...
-        +-- integration
-            +-- ...
-        +-- unit
-            +-- ...
-|   +-- app.js
-|   +-- server.js
+|   |   +-- ...
+|   +-- tests
+|   |   +-- data
+|   |   |   +-- ...
+|   |   +-- integration
+|   |   |   +-- ...
+|   |   +-- unit
+|   |   |   +-- ...
 ```
 
-| Directory | Description |
-|----------------|--------------------------------------------------|
-| `controllers`  | Controllers written with SQL queries             |
-| `database/sql` | Connection function and scripts written with SQL |
-| `lib`          | Shared helper functions                          |
-| `routes`       | API routes                                       |
-| `tests`        | Test suite                                       |
+| Directory | Description                                                               |
+|----------------|---------------------------------------------------------------------------|
+| `controllers`  | Controller functions written with SQL                                     |
+| `database/sql` | Connection function and scripts written with SQL                          |
+| `lib`          | Shared helper functions                                                   |
+| `routes`       | API routes                                                                |
+| `tests`        | Test data, unit tests for controllers and integration tests for endpoints |
 
 ## API Endpoints
 

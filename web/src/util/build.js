@@ -38,6 +38,13 @@ async function compileSass() {
     await fs.writeFile(outputPath, out.css);
 }
 
+async function copyJavaScript() {
+    const jsSource = path.join(govUkRoot, 'node_modules/govuk-frontend/govuk/all.js');
+    const jsDest = path.join(staticDir, 'govuk-frontend.js');
+    await fs.copyFile(jsSource, jsDest);
+}
+
+
 /**
  * Copy govuk assets into the .static folder
  * 
@@ -63,6 +70,7 @@ async function copyAssets() {
 function run() {
     return Promise.all([
         compileSass(),
+        copyJavaScript(),
         copyAssets()
     ]);
 }

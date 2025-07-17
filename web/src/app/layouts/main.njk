@@ -82,3 +82,9 @@
 		{% endblock %}
 		{% block pageContent %}{% endblock %}
 	{% endblock %}
+{% block bodyEnd %}
+	<script src="/govuk-frontend.js"></script>
+	<script>
+		window.GOVUKFrontend.initAll()
+	</script>
+{% endblock %}

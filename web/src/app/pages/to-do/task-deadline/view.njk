@@ -11,26 +11,35 @@
                     id: "task-deadline",
                     namePrefix: "task-deadline",
                     hint: {
-                        text: "If the task has a deadline, enter it below, or continue to the next page."
+                        text: "Enter the task deadline below."
                     },
                     items: [
                         {
                             classes: "govuk-input--width-2",
                             id: "task-deadline-day",
                             name: "day",
-                            value: taskDeadline['task-deadline-day']
+                            value: taskDeadline['task-deadline-day'] or errors['task-deadline-day'].value,
+                            errorMessage: errors['task-deadline-day'] and {
+                                text: errors['task-deadline-day'].msg
+                            }
                         },
                         {
                             classes: "govuk-input--width-2",
                             id: "task-deadline-month",
                             name: "month",
-                            value: taskDeadline['task-deadline-month']
+                            value: taskDeadline['task-deadline-month'] or errors['task-deadline-month'].value,
+                            errorMessage: errors['task-deadline-month'] and {
+                                text: errors['task-deadline-month'].msg
+                            }
                         },
                         {
                             classes: "govuk-input--width-4",
                             id: "task-deadline-year",
                             name: "year",
-                            value: taskDeadline['task-deadline-year']
+                            value: taskDeadline['task-deadline-year'] or errors['task-deadline-year'].value,
+                            errorMessage: errors['task-deadline-year'] and {
+                                text: errors['task-deadline-year'].msg
+                            }
                         }
                     
                     ]

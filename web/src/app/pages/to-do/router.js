@@ -15,6 +15,7 @@ import { getTask, postTask } from './task/task.controller.js';
 //validators
 import { taskNameValidator } from './task-name/task-name-validator.js';
 import { taskPriorityValidator } from './task-priority/task-priority-validator.js';
+import { taskDeadlineValidator } from './task-deadline/task-deadline.validator.js';
 import { validationErrorHandler } from '../../validators/validation-error-handler.js';
 
 
@@ -42,7 +43,7 @@ toDoRouter
 
 toDoRouter
     .get('/task-deadline', toDoMiddleware, getTaskDeadline)
-    .post('/task-deadline', toDoMiddleware, postTaskDeadline)
+    .post('/task-deadline', toDoMiddleware, taskDeadlineValidator(), validationErrorHandler, postTaskDeadline)
 
 toDoRouter
     .get('/check-answers', toDoMiddleware, getCheckAnswers)

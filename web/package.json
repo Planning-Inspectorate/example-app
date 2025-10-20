@@ -15,14 +15,14 @@
   "dependencies": {
     "@ministryofjustice/frontend": "^6.0.0",
     "axios": "^1.12.2",
-    "body-parser": "^1.20.2",
+    "body-parser": "^2.2.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "express-validator": "^7.2.1",
-    "govuk-frontend": "^4.7.0",
+    "govuk-frontend": "^5.13.0",
     "nunjucks": "^3.2.4",
-    "pino": "^10.0.0",
+    "pino": "^10.1.0",
     "pino-pretty": "^13.1.2"
   },
   "devDependencies": {

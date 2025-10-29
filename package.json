@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Planning-Inspectorate/example-app#readme",
   "devDependencies": {
-    "commitizen": "^4.3.0",
+    "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0"
   },
   "config": {

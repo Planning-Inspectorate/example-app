@@ -3,11 +3,11 @@
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
 import logger from '../../lib/logger.js';
-import { tasks } from '../data/task-data.js';
+import { task } from '../data/task-data.js';
 
 // mock the SQL connection module to avoid actual database calls
 jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
-    const mockQuery = jest.fn().mockResolvedValue([tasks]);
+    const mockQuery = jest.fn().mockResolvedValue([task]);
     const mockEnd = jest.fn(); 
   
     return {
@@ -16,30 +16,36 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     };
 });
 
-const { getAllTaskData } = (await import('../../controllers/get-all-task-data.js'));
+const { getTask } = (await import('../../controllers/get-task.js'));
 
-// test suite for the getAllTaskData controller function
-describe('getAllTaskData', () => {
-    it('should return all tasks', async () => {
+// test suite for the getTask controller function
+describe('getTask', () => {
+    it('should return a task', async () => {
         const req = httpMocks.createRequest({
             method: 'GET',
-            url: '/tasks',
+            url: '/tasks/3',
+            params: {
+                taskId: 3
+            }
         });
 
         const res = httpMocks.createResponse();
         res.status = jest.fn().mockReturnThis();
         res.json = jest.fn();
 
-        await getAllTaskData(req, res);
+        await getTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith([tasks]);
+        expect(res.json).toHaveBeenCalledWith([task]);
     });
 
     it('should return an error', async () => {
         const req = httpMocks.createRequest({
             method: 'GET',
-            url: '/tasks',
+            url: '/tasks/3',
+            params: {
+                taskId: 3
+            }
         });
 
         const res = httpMocks.createResponse();
@@ -52,9 +58,14 @@ describe('getAllTaskData', () => {
         const { query } = (await import('../../database/sql/sql-connection.js')).default;
         query.mockRejectedValue(error);
 
-        await getAllTaskData(req, res);
+        await getTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);
         expect(res.send).toHaveBeenCalledWith('Internal server error');
     });
 });
+
+
+
+
+

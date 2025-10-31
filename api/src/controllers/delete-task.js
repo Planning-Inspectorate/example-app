@@ -1,5 +1,5 @@
-import connection from '../database/sql/sql-connection.js';
 import logger from '../lib/logger.js';
+import { deleteTaskData} from '../database/repositories/todo.repository.js';
 
 /**
  * Delete task data from the database
@@ -7,10 +7,10 @@ import logger from '../lib/logger.js';
  * @param res
  * @returns {Promise<void>}
  */
-export async function deleteTaskData (req, res) {
+export async function deleteTask (req, res) {
     try {
         const taskId = req.params.taskId;
-        const results = await connection.query('DELETE FROM to_do WHERE id = ?', taskId);
+        const results = await deleteTaskData(taskId);
         (res.status(204).json(results));
     }
     catch (error){

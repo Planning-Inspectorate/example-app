@@ -2,12 +2,12 @@ import express  from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json' with { type: 'json' };
 
-import { getAllTaskData } from '../controllers/get-all-task-data.js';
-import { getTaskData } from '../controllers/get-task-data.js';
-import { addTaskData } from '../controllers/add-task-data.js';
-import { deleteTaskData } from '../controllers/delete-task-data.js';
+import { getAllTasks } from '../controllers/get-all-tasks.js';
+import { getTask } from '../controllers/get-task.js';
+import { addTask } from '../controllers/add-task.js';
+import { deleteTask } from '../controllers/delete-task.js';
 
-// create an express router, for handling different paths within the API
+// create an express router for handling different paths within the API
 const apiRouter = express.Router();
 
 // set up the Swagger UI for API documentation
@@ -21,7 +21,7 @@ apiRouter.get(
         #swagger.path = '/tasks'
         #swagger.description = 'Get all tasks'
     */
-    getAllTaskData
+    getAllTasks
 );
 
 apiRouter.get(
@@ -37,7 +37,7 @@ apiRouter.get(
             in: 'path'
         }
     */
-    getTaskData
+    getTask
 );
 
 apiRouter.post(
@@ -77,7 +77,7 @@ apiRouter.post(
             }
         }
     */
-    addTaskData
+    addTask
 );
 
 apiRouter.delete(
@@ -93,7 +93,7 @@ apiRouter.delete(
             in: 'path'
         }
     */
-    deleteTaskData
+    deleteTask
 );
 
 export { apiRouter };

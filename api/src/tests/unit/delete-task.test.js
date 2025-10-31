@@ -16,10 +16,10 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     };
 });
 
-const { deleteTaskData } = (await import('../../controllers/delete-task-data.js'));
+const { deleteTask } = (await import('../../controllers/delete-task.js'));
 
-// test suite for the deleteTaskData controller function
-describe('deleteTaskData', () => {  
+// test suite for the deleteTask controller function
+describe('deleteTask', () => {
     it('should delete a task', async () => {
         const req = httpMocks.createRequest({
             method: 'DELETE',
@@ -33,7 +33,7 @@ describe('deleteTaskData', () => {
         res.status = jest.fn().mockReturnThis();
         res.json = jest.fn();
 
-        await deleteTaskData(req, res);
+        await deleteTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(204);
         expect(res.json).toHaveBeenCalledWith([task]);
@@ -58,7 +58,7 @@ describe('deleteTaskData', () => {
         const { query } = (await import('../../database/sql/sql-connection.js')).default;
         query.mockRejectedValue(error);
 
-        await deleteTaskData(req, res);
+        await deleteTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);
         expect(res.send).toHaveBeenCalledWith('Internal server error');

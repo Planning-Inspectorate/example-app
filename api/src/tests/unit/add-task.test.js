@@ -16,10 +16,10 @@ jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
     };
 });
 
-const { addTaskData } = (await import('../../controllers/add-task-data.js'));
+const { addTask } = (await import('../../controllers/add-task.js'));
 
-// test suite for the addTaskData controller function
-describe('addTaskData', () => {
+// test suite for the addTask controller function
+describe('addTask', () => {
     it('should add a task', async () => {
         const req = httpMocks.createRequest({
             method: 'POST',
@@ -31,7 +31,7 @@ describe('addTaskData', () => {
         res.status = jest.fn().mockReturnThis();
         res.json = jest.fn();
 
-        await addTaskData(req, res);
+        await addTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(201);
         expect(res.json).toHaveBeenCalledWith([task]);
@@ -54,7 +54,7 @@ describe('addTaskData', () => {
         const { query } = (await import('../../database/sql/sql-connection.js')).default;
         query.mockRejectedValue(error);
 
-        await addTaskData(req, res);
+        await addTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);
         expect(res.send).toHaveBeenCalledWith('Internal server error');

@@ -29,6 +29,7 @@ const taskInput = {
 };
 
 const task = {
+    id: 3,
     title: 'Task 3',
     description: 'Description of Task 3',
     completeBy: '2025-06-01 00:00:00',

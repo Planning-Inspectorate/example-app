@@ -1,5 +1,5 @@
 import logger from '../lib/logger.js';
-import { getTaskData} from '../database/repositories/todo.repository.js';
+import { getTaskData } from '../database/repositories/todo.repository.js';
 
 /**
  * Get specific task data from the database

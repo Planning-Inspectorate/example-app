@@ -2,25 +2,25 @@
 
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
-import logger from '../../lib/logger.js';
-import { taskInput, task } from '../data/task-data.js';
+import logger from '../../../lib/logger.js';
+import {taskInput, task, tasks} from '../../data/task-data.js';
 
-// mock the SQL connection module to avoid actual database calls
-jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
-    const mockQuery = jest.fn().mockResolvedValue([task]);
-    const mockEnd = jest.fn(); 
-  
+// mock the function in the repository module to avoid actual database calls
+jest.unstable_mockModule('../../../database/repositories/todo.repository.js', () => {
+    const mockAddTaskData = jest.fn();
+
     return {
-      __esModule: true,
-      default: { query: mockQuery, end: mockEnd },
+        __esModule: true,
+        addTaskData: mockAddTaskData
     };
 });
-
-const { addTask } = (await import('../../controllers/add-task.js'));
 
 // test suite for the addTask controller function
 describe('addTask', () => {
     it('should add a task', async () => {
+        const { addTaskData } = (await import('../../../database/repositories/todo.repository.js'));
+        addTaskData.mockResolvedValue([task]);
+
         const req = httpMocks.createRequest({
             method: 'POST',
             url: '/tasks',
@@ -31,6 +31,7 @@ describe('addTask', () => {
         res.status = jest.fn().mockReturnThis();
         res.json = jest.fn();
 
+        const { addTask } = (await import('../../../controllers/add-task.js'));
         await addTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(201);
@@ -38,6 +39,12 @@ describe('addTask', () => {
     });
 
     it('should return an error', async () => {
+        const error = new Error('Database error');
+        jest.spyOn(logger, 'error').mockImplementation(() => {});
+
+        const { addTaskData } = (await import('../../../database/repositories/todo.repository.js'));
+        addTaskData.mockRejectedValue(error);
+
         const req = httpMocks.createRequest({
             method: 'POST',
             url: '/tasks',
@@ -48,12 +55,7 @@ describe('addTask', () => {
         res.status = jest.fn().mockReturnThis();
         res.send = jest.fn();
 
-        const error = new Error('Database error');
-        jest.spyOn(logger, 'error').mockImplementation(() => {});
-
-        const { query } = (await import('../../database/sql/sql-connection.js')).default;
-        query.mockRejectedValue(error);
-
+        const { addTask } = (await import('../../../controllers/add-task.js'));
         await addTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);

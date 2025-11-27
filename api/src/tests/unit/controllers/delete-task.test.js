@@ -2,25 +2,25 @@
 
 import { jest } from '@jest/globals';
 import httpMocks from 'node-mocks-http';
-import logger from '../../lib/logger.js';
-import { task } from '../data/task-data.js';
+import logger from '../../../lib/logger.js';
+import { task } from '../../data/task-data.js';
 
-// mock the SQL connection module to avoid actual database calls
-jest.unstable_mockModule('../../database/sql/sql-connection.js', () => {
-    const mockQuery = jest.fn().mockResolvedValue([task]);
-    const mockEnd = jest.fn(); 
-  
+// mock the function in the repository module to avoid actual database calls
+jest.unstable_mockModule('../../../database/repositories/todo.repository.js', () => {
+    const mockDeleteTaskData = jest.fn();
+
     return {
-      __esModule: true,
-      default: { query: mockQuery, end: mockEnd },
+        __esModule: true,
+        deleteTaskData: mockDeleteTaskData
     };
 });
-
-const { deleteTask } = (await import('../../controllers/delete-task.js'));
 
 // test suite for the deleteTask controller function
 describe('deleteTask', () => {
     it('should delete a task', async () => {
+        const { deleteTaskData } = (await import('../../../database/repositories/todo.repository.js'));
+        deleteTaskData.mockResolvedValue([task]);
+
         const req = httpMocks.createRequest({
             method: 'DELETE',
             url: '/tasks/3',
@@ -33,6 +33,7 @@ describe('deleteTask', () => {
         res.status = jest.fn().mockReturnThis();
         res.json = jest.fn();
 
+        const { deleteTask } = (await import('../../../controllers/delete-task.js'));
         await deleteTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(204);
@@ -40,6 +41,12 @@ describe('deleteTask', () => {
     });
 
     it('should return an error', async () => {
+        const error = new Error('Database error');
+        jest.spyOn(logger, 'error').mockImplementation(() => {});
+
+        const { deleteTaskData } = (await import('../../../database/repositories/todo.repository.js'));
+        deleteTaskData.mockRejectedValue(error);
+
         const req = httpMocks.createRequest({
             method: 'DELETE',
             url: '/tasks/3',
@@ -52,12 +59,7 @@ describe('deleteTask', () => {
         res.status = jest.fn().mockReturnThis();
         res.send = jest.fn();
 
-        const error = new Error('Database error');
-        jest.spyOn(logger, 'error').mockImplementation(() => {});
-
-        const { query } = (await import('../../database/sql/sql-connection.js')).default;
-        query.mockRejectedValue(error);
-
+        const { deleteTask } = (await import('../../../controllers/delete-task.js'));
         await deleteTask(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);

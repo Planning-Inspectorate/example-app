@@ -1,5 +1,5 @@
 import logger from '../lib/logger.js';
-import { deleteTaskData} from '../database/repositories/todo.repository.js';
+import { deleteTaskData } from '../database/repositories/todo.repository.js';
 
 /**
  * Delete task data from the database

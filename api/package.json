@@ -4,7 +4,7 @@
   "description": "API for example-app",
   "main": "index.js",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

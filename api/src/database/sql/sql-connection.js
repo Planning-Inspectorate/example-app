@@ -19,10 +19,10 @@ async function createConnection() {
         logger.info('Database connected successfully');
         return connection;
     } catch (error) {
-        logger.info('Error connecting to the database:', error);
+        logger.error(`Error connecting to the database ${error}`);
         throw error;
     }
-};
+}
 
 const connection = await createConnection();
 

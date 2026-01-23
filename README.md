@@ -20,7 +20,7 @@ The API app is connected to a MySQL database which runs in a Docker container. T
 -	`docker compose up` to create and run the container.
 -   `npm run table:create` to create the to-do table.
 -   `npm run table:seed` to populate the to-do table with data.
--   `npm run table:truncate` to remove all data from the to-do table if required.
+-   `npm run table:reset` to clear and re-seed the to-do table as required.
 -   `docker compose down` to stop and remove the container. This will not remove any data stored in the database.
 -	`docker compose down –v` to stop and remove the container and its volumes. This will destroy the database and its data.
 

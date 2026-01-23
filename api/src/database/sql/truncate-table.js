@@ -1,22 +1,20 @@
 import logger from '../../../src/lib/logger.js';
 import connection from './sql-connection.js';
 
-const truncateToDoTable = 'TRUNCATE TABLE to_do';
-
 /**
  * Truncate the to_do table
  * @returns {Promise<void>}
  */
 async function truncateTable() {
-    try {
-        const [result] = await connection.query(truncateToDoTable);
-        logger.info('Table truncated');
-    } catch (error) {
-        logger.error('Error truncating table:', error);
-        throw error;
-    }
-
-    await connection.end();
+    await connection.query('TRUNCATE TABLE to_do');
 }
 
-truncateTable();
+truncateTable()
+    .then(async () => {
+        await connection.end();
+        logger.info('Table truncated');
+    })
+    .catch(async (error) => {
+        await connection.end();
+        logger.error(`Error truncating table: ${error}`);
+    });

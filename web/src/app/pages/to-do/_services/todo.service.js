@@ -9,7 +9,7 @@ export async function getAllTasks() {
         const { data: tasks } = await axios.get(`${baseUrl}/tasks`);
         return tasks[0];
     } catch (error) {
-        logger.error('Error fetching all tasks:', error);
+        logger.error(`Error fetching all tasks: ${error}`);
         throw error;
     }
 };
@@ -23,7 +23,7 @@ export async function getTaskById(taskId) {
         const tasks = data[0];
         return tasks[0];
     } catch (error) {
-        logger.error('Error fetching task:', error);
+        logger.error(`Error fetching task: ${error}`);
         throw error;
     }
 };
@@ -33,7 +33,7 @@ export async function createTask(taskBody) {
         const task = await axios.post(`${baseUrl}/tasks`, taskBody);
         return task;
     } catch (error) {
-        logger.error('Error creating task:', error);
+        logger.error(`Error creating task: ${error}`);
         throw error;
     }
 };
@@ -46,7 +46,7 @@ export async function deleteTask(taskId) {
         const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
         return task;
     } catch (error) {
-        logger.error('Error deleting task:', error);
+        logger.error(`Error deleting task: ${error}`);
         throw error;
     }
 };

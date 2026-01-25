@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  sql-server-db:
+    container_name: example-app-sql-server-db
+    build: ./src/server/database
+    ports:
+    - "1433:1433"
+    environment:
+      SA_PASSWORD: "MyStrongPassw0rd!"
+      ACCEPT_EULA: "Y"

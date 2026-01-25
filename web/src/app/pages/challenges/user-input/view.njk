@@ -1,0 +1,47 @@
+{% extends "layouts/main.njk" %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block backLink %}{% endblock %}
+
+{% block content %}
+
+  {{ govukBackLink({
+      text: "Back",
+      href: "/challenges"
+    }) }}
+
+
+  {% block pageContent %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+             <p class="govuk-body govuk-!-margin-bottom-6">
+                Lorem ipsum planicious inpectoratious dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labo.
+            </p>
+
+        <form action="/challenges/user-input" method="post" novalidate>
+          {{ govukInput({
+            label: {
+              text: "Enter your email"
+            },
+
+            id: "email",
+            name: "email",
+            type: "email",
+            errorMessage: errors.email and { text: errors.email.msg }
+          }
+          
+          ) }}
+
+          {{ govukButton({ text: "Submit email" }) }}
+        </form>
+        </div>
+    </div>
+
+
+  {% endblock %}
+
+{% endblock %}

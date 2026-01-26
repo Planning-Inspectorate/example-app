@@ -13,6 +13,7 @@ export function getTaskDeadline(req, res) {
 
 export function postTaskDeadline(req, res) {
     const { body, session } = req
+    const {errors, errorSummary} = body
 
     const { locals } = res
     const { baseUrl } = locals
@@ -22,6 +23,14 @@ export function postTaskDeadline(req, res) {
     session.todo = session.todo || {}
     session.todo.taskDeadlineFriendly = taskDeadlineFriendly
     session.todo.taskDeadline = body
+
+    if(errors) {
+        return res.render(view, {
+            ...taskDeadlineViewModel(baseUrl, session, body),
+            errors,
+            errorSummary
+        })
+    }
 
     return res.redirect(`${baseUrl}/check-answers`)
 }

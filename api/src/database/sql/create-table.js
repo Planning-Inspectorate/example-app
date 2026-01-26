@@ -5,7 +5,7 @@ import connection from './sql-connection.js';
  * Create the to_do table if it doesn't exist
  * @returns {Promise<void>}
  */
-async function createTable() {
+async function createTable () {
     await connection.query(
         `CREATE TABLE IF NOT EXISTS to_do (
             id INT AUTO_INCREMENT PRIMARY KEY, 

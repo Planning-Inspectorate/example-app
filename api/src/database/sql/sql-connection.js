@@ -6,7 +6,7 @@ dotenv.config({ path: './.env' })
 
 /**
  * Create a connection to the MySQL database
- * @returns {Promise<mysql.Connection>} The MySQL connection.
+ * @returns {Promise<mysql.Connection>}
  */
 async function createConnection() {
     try {

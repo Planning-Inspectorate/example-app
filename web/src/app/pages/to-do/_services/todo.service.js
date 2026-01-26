@@ -12,36 +12,37 @@ export async function getAllTasks() {
         logger.error(`Error fetching all tasks: ${error}`);
         throw error;
     }
-};
+}
 
 export async function getTaskById(taskId) {
     if (!/^[0-9]+$/.test(taskId)) {
         throw new Error('Task ID is required to fetch the task');
     }
+
     try {
-        const { data } = await axios.get(`${baseUrl}/tasks/${taskId}`);
-        const tasks = data[0];
-        return tasks[0];
+        const { data: task } = await axios.get(`${baseUrl}/tasks/${taskId}`);
+        return task[0][0];
     } catch (error) {
         logger.error(`Error fetching task: ${error}`);
         throw error;
     }
-};
+}
 
 export async function createTask(taskBody) {
     try {
-        const task = await axios.post(`${baseUrl}/tasks`, taskBody);
+        const { data: task } = await axios.post(`${baseUrl}/tasks`, taskBody);
         return task;
     } catch (error) {
         logger.error(`Error creating task: ${error}`);
         throw error;
     }
-};
+}
 
 export async function deleteTask(taskId) {
     if (!/^[0-9]+$/.test(taskId)) {
         throw new Error('Task ID is required for deletion');
     }
+
     try {
         const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
         return task;
@@ -49,4 +50,4 @@ export async function deleteTask(taskId) {
         logger.error(`Error deleting task: ${error}`);
         throw error;
     }
-};
+}

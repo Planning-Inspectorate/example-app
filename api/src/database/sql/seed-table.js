@@ -5,7 +5,7 @@ import connection from './sql-connection.js';
  * Seed the to_do table with data if no records exist
  * @returns {Promise<void>}
  */
-async function seedTable() {
+async function seedTable () {
     await connection.query(
         `INSERT INTO to_do (
             id,

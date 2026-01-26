@@ -7,7 +7,7 @@ import { getAllTaskData } from '../database/repositories/todo.repository.js';
  * @param res
  * @returns {Promise<void>}
  */
-export async function getAllTasks(req, res) {
+export async function getAllTasks (req, res) {
     try {
         const results = await getAllTaskData();
         res.status(200).json(results);

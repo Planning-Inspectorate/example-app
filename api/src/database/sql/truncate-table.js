@@ -5,7 +5,7 @@ import connection from './sql-connection.js';
  * Truncate the to_do table
  * @returns {Promise<void>}
  */
-async function truncateTable() {
+async function truncateTable () {
     await connection.query('TRUNCATE TABLE to_do');
 }
 

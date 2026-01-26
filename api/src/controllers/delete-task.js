@@ -11,7 +11,7 @@ export async function deleteTask (req, res) {
     try {
         const taskId = req.params.taskId;
         const results = await deleteTaskData(taskId);
-        (res.status(204).json(results));
+        res.status(204).json(results);
     }
     catch (error){
         logger.error(error);

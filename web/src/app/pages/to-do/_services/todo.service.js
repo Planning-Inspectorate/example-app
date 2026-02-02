@@ -1,23 +1,31 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 const baseUrl = 'http://localhost:3000';
 
 export async function getAllTasks() {
-    const { data: allTasks } = await axios.get(`${baseUrl}/todos`);
-    return allTasks
+    const res = await fetch(`${baseUrl}/todos`);
+    return res.json();
 }
 
 export async function getTaskById(taskId) {
-    const { data: task } = await axios.get(`${baseUrl}/todos/${taskId}`);
-    return task
+    const res = await fetch(`${baseUrl}/todos/${taskId}`);
+    return res.json();
 }
 
 export async function createTask(taskBody) {
-    const { data: task } = await axios.post(`${baseUrl}/todos`, taskBody);
-    return task
+    const res = await fetch(`${baseUrl}/todos`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(taskBody)
+    });
+    return res.json();
 }
 
 export async function deleteTask(taskId) {
-    const { data: task } = await axios.delete(`${baseUrl}/todos/${taskId}`);
-    return task
+    const res = await fetch(`${baseUrl}/todos/${taskId}`, {
+        method: 'DELETE'
+    });
+    return res.json();
 }

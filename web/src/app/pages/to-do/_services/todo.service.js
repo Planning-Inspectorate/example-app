@@ -1,4 +1,3 @@
-import axios from 'axios';
 import config from '../../../../../../web/src/app/config.js';
 import logger from '../../../../../src/util/logger.js';
 
@@ -6,7 +5,8 @@ const baseUrl = config.apiUrl;
 
 export async function getAllTasks() {
     try {
-        const { data: tasks } = await axios.get(`${baseUrl}/tasks`);
+        const res = await fetch(`${baseUrl}/tasks`);
+        const tasks = await res.json();
         return tasks[0];
     } catch (error) {
         logger.error(`Error fetching all tasks: ${error}`);
@@ -20,7 +20,8 @@ export async function getTaskById(taskId) {
     }
 
     try {
-        const { data: task } = await axios.get(`${baseUrl}/tasks/${taskId}`);
+        const res = await fetch(`${baseUrl}/tasks/${taskId}`);
+        const task = await res.json();
         return task[0][0];
     } catch (error) {
         logger.error(`Error fetching task: ${error}`);
@@ -30,8 +31,14 @@ export async function getTaskById(taskId) {
 
 export async function createTask(taskBody) {
     try {
-        const { data: task } = await axios.post(`${baseUrl}/tasks`, taskBody);
-        return task;
+        const res = await fetch(`${baseUrl}/tasks`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(taskBody)
+        });
+        return res.json();
     } catch (error) {
         logger.error(`Error creating task: ${error}`);
         throw error;
@@ -44,8 +51,10 @@ export async function deleteTask(taskId) {
     }
 
     try {
-        const { data: task } = await axios.delete(`${baseUrl}/tasks/${taskId}`);
-        return task;
+        const res = await fetch(`${baseUrl}/tasks/${taskId}`, {
+            method: 'DELETE'
+        });
+        return res.text();
     } catch (error) {
         logger.error(`Error deleting task: ${error}`);
         throw error;

@@ -43,7 +43,7 @@ export function getTaskPayload(task) {
     return {
         title: task.taskName,
         description: task.taskContent || null,
-        taskDeadline: task.taskDeadline || null,
+        taskDeadlineFriendly: task.taskDeadlineFriendly || null,
         priority: task.taskPriority
     }
 }
